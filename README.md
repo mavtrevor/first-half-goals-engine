@@ -35,7 +35,7 @@ Python 3.14.0 is the tested runtime. A new installation can create a local envir
 
 - Nine original OpenLigaDB season snapshots, 2018–19 through the in-progress 2026–27 season: 2,754 recorded fixtures, of which 2,494 were marked finished with structurally valid HT scores at retrieval.
 - Twenty authority-supported score corrections, including fifteen binary target changes. Original bytes remain preserved. SQLite stores the effective corrected versions and correction provenance.
-- The complete 2,448-match cross-source comparison and a fixed 100-match audit sample. Independent manual audit remains incomplete; source agreement is not proof of independent original collection.
+- The complete 2,448-match cross-source comparison and a fixed 100-match audit sample. All 100 sample half-time scores now have separate official-publication corroboration from an assisted desk review; this does not prove independent upstream collection. See [audit findings](docs/score-audit-findings.md) and the per-match evidence ledger in `evidence/independent-score-audit.json`.
 - A frozen monthly development/holdout experiment, raw historical research predictions, baseline comparison and week/fortnight-block uncertainty.
 - Forms for recording human observations and references to codes already created in SportyBet's official Nigeria interface. The app never invents or validates a code against SportyBet's servers.
 

@@ -1,0 +1,122 @@
+{
+  "source_report_sha256": "809c530079a4028ff68cefdc687ccb469955e0240c19b6709a497f9b7b3c07d9",
+  "summary": {
+    "n": 296,
+    "positives": 228,
+    "observed_rate": 0.7702702702702703,
+    "mean_p": 0.7734868848549113,
+    "mean_baseline": 0.7638123239295602,
+    "mean_loss_difference": 0.001009971465148924
+  },
+  "p_range": [
+    0.6523379974153682,
+    0.8560448423294568
+  ],
+  "p_5_50_95": [
+    0.7313387055681047,
+    0.7733020242855471,
+    0.8127345265590968
+  ],
+  "p_population_sd": 0.026472654235747205,
+  "mean_absolute_difference_from_baseline": 0.02163403735885344,
+  "p_higher_than_baseline": 193,
+  "by_month": {
+    "2025-08": {
+      "n": 16,
+      "positives": 13,
+      "observed_rate": 0.8125,
+      "mean_p": 0.7734919136916842,
+      "mean_baseline": 0.7591577582961906,
+      "mean_loss_difference": -0.006017724656060467
+    },
+    "2025-09": {
+      "n": 24,
+      "positives": 22,
+      "observed_rate": 0.9166666666666666,
+      "mean_p": 0.7715751908979177,
+      "mean_baseline": 0.7606279291240424,
+      "mean_loss_difference": -0.008220123021916935
+    },
+    "2025-10": {
+      "n": 25,
+      "positives": 17,
+      "observed_rate": 0.68,
+      "mean_p": 0.7822509216912521,
+      "mean_baseline": 0.7609035756568868,
+      "mean_loss_difference": 8.425964072099612e-06
+    },
+    "2025-11": {
+      "n": 33,
+      "positives": 27,
+      "observed_rate": 0.8181818181818182,
+      "mean_p": 0.7683975744514324,
+      "mean_baseline": 0.7603137220028106,
+      "mean_loss_difference": 0.016355934311781558
+    },
+    "2025-12": {
+      "n": 27,
+      "positives": 18,
+      "observed_rate": 0.6666666666666666,
+      "mean_p": 0.774295184767634,
+      "mean_baseline": 0.7587704920149961,
+      "mean_loss_difference": 0.004625602451654031
+    },
+    "2026-01": {
+      "n": 42,
+      "positives": 33,
+      "observed_rate": 0.7857142857142857,
+      "mean_p": 0.7745584960767774,
+      "mean_baseline": 0.7641481393317402,
+      "mean_loss_difference": -0.0038462147205181726
+    },
+    "2026-02": {
+      "n": 35,
+      "positives": 25,
+      "observed_rate": 0.7142857142857143,
+      "mean_p": 0.7782326031089691,
+      "mean_baseline": 0.7654612068350636,
+      "mean_loss_difference": -0.008891649070290386
+    },
+    "2026-03": {
+      "n": 31,
+      "positives": 23,
+      "observed_rate": 0.7419354838709677,
+      "mean_p": 0.7769898120261574,
+      "mean_baseline": 0.7657907082060182,
+      "mean_loss_difference": 0.0006755894802989688
+    },
+    "2026-04": {
+      "n": 36,
+      "positives": 29,
+      "observed_rate": 0.8055555555555556,
+      "mean_p": 0.7631045379816275,
+      "mean_baseline": 0.7683718938327483,
+      "mean_loss_difference": 0.006198759817354088
+    },
+    "2026-05": {
+      "n": 27,
+      "positives": 21,
+      "observed_rate": 0.7777777777777778,
+      "mean_p": 0.7744827497905208,
+      "mean_baseline": 0.7704016194810419,
+      "mean_loss_difference": 0.005789646723322748
+    }
+  },
+  "positive_cases": {
+    "n": 228,
+    "positives": 228,
+    "observed_rate": 1,
+    "mean_p": 0.7735345728013889,
+    "mean_baseline": 0.7637909645930232,
+    "mean_loss_difference": -0.012021528515116049
+  },
+  "negative_cases": {
+    "n": 68,
+    "positives": 0,
+    "observed_rate": 0,
+    "mean_p": 0.7733269899755454,
+    "mean_baseline": 0.7638839405285373,
+    "mean_loss_difference": 0.04470382434015501
+  },
+  "no_refit_or_retuning": true
+}

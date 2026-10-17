@@ -1,0 +1,34 @@
+{
+  "scope": "Fixed-sample assisted desk corroboration against separate official publications; not proof of independent upstream collection",
+  "reviewed_on": "2026-10-17",
+  "selected": 100,
+  "corroborated": 100,
+  "unresolved": 0,
+  "new_ht_disagreements": 0,
+  "missing_reference_ht_now_officially_corroborated": 17,
+  "evidence_kinds": {
+    "explicit_ht": 8,
+    "derived_played_ft_zero": 11,
+    "goal_timeline": 40,
+    "explicit_halftime_narrative": 41
+  },
+  "evidence_access": {
+    "official_search_indexed_text": 13,
+    "official_page_text": 87
+  },
+  "by_season": {
+    "2018-19": 13,
+    "2019-20": 13,
+    "2020-21": 13,
+    "2021-22": 13,
+    "2022-23": 12,
+    "2023-24": 12,
+    "2024-25": 12,
+    "2025-26": 12
+  },
+  "sample_sha256": "de518ce5ac555307184ea6f7c2a02043b84be1dc9661ea3904b97c5e56c32c89",
+  "ledger_sha256": "a6a23a8fd1b7e6550f0cff60c7c08c03989bfb5f88569ec5ed2bf9d62fae28fa",
+  "csv_sha256": "ca90d92e04978181711280c78cb21274930ded34b4d0405f91f883d91bf51407",
+  "score_or_model_changes": false,
+  "operational_release": false
+}

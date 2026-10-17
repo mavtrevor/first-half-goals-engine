@@ -98,7 +98,7 @@ def display():
                                'Reviewed HT': c['corrected_ht'], 'Authority': c['authority_url']} for c in corrections],
                              hide_index=True, width='stretch',
                              column_config={'Authority': st.column_config.LinkColumn('Authority')})
-            st.caption('Each correction is bound to its original score and snapshot hash. The independent 100-match audit remains incomplete.')
+            st.caption('Each correction is bound to its original score and snapshot hash. All 100 fixed-sample half-time scores were corroborated against official publications by assisted desk review. This does not certify the full archive or independent upstream collection.')
         with backtest_tab:
             st.subheader('Historical evidence')
             report = read_json(DATA_DIR/'reports/v1/backtest.json')
@@ -192,7 +192,7 @@ def display():
         with readiness_tab:
             st.subheader('What still needs evidence')
             gates = [('API access terms', policy['live_access_enabled']),
-                     ('Independent 100-match score audit', policy['independent_score_audit_passed']),
+                     ('Fixed 100-match official score corroboration', policy['independent_score_audit_passed']),
                      ('Current fixture identity and kickoff checks', policy['current_fixture_checks_passed']),
                      ('SportyBet Nigeria settlement rules', policy['nigeria_rules_verified']),
                      ('Human booking / reload workflow', policy['manual_code_workflow_verified']),

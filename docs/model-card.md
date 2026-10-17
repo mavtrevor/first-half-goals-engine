@@ -4,7 +4,7 @@ Status: **unvalidated research; not released for current-match recommendations**
 
 Target: at least one goal by either team at first-half completion, including stoppage time. Only Bundesliga regulation league games; no live, virtual, youth or cup model.
 
-Data: saved OpenLigaDB score snapshots, with 20 hash-bound, authority-supported HT corrections. Reference HT absence does not exclude a source-labeled row. The remaining independent score audit has not passed. Historical publication timestamps and historical corrections were not reconstructed exactly.
+Data: saved OpenLigaDB score snapshots, with 20 hash-bound, authority-supported HT corrections. Reference HT absence does not exclude a source-labeled row. Subsequent assisted desk review corroborated all 100 fixed-sample half-time scores against separate official publications; it does not establish upstream collection independence or population-wide accuracy. Historical publication timestamps and historical corrections were not reconstructed exactly.
 
 Features: last-20 eligible league-match team scoring/conceding and nonzero frequencies; venue summaries with shrinkage; history counts. Inputs use earlier available results only. General scoring priors are pooled per-team league means; venue priors distinguish home and away. New/insufficient-history teams abstain. No current-match shots/cards, xG, injury feed or LLM estimates.
 
@@ -21,7 +21,7 @@ Lower scores are better. The final holdout's paired weekly-block 95% interval fo
 
 Holdout mean model probability was 0.77349 and the observed rate was 0.77027. A close overall mean is not enough: holdout ROC-AUC was about 0.515 and calibration slope about 0.199. The model provides little demonstrated ranking value. Only 68 negative outcomes occur in this final-period sample, which also limits supported calibration claims. Reliability-bin intervals describe bin frequency, not a guaranteed single-match probability interval.
 
-The release rule remains failed: insufficient final-period sample/class counts for the stronger evidence gate, no clear baseline improvement, incomplete independent label audit, no prospective test and no legitimate SportyBet historical first-half prices. No return/ROI, daily picks, individual future confidence bounds, stake recommendation or accumulator probability was calculated.
+The release rule remains failed: insufficient final-period sample/class counts for the stronger evidence gate, no clear baseline improvement, no prospective test and no legitimate SportyBet historical first-half prices. The completed fixed-sample official corroboration does not rescue this result. No return/ROI, daily picks, individual future confidence bounds, stake recommendation or accumulator probability was calculated.
 
 Do not fix the result by tuning again on the same holdout. Any proposed challenger needs a new declared experiment and independent confirmation. A 48-hour availability-lag sensitivity is separate evidence and cannot rescue or replace a failed primary test.
 
