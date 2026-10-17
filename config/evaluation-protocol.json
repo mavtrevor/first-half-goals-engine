@@ -1,0 +1,18 @@
+{
+  "name": "bundesliga-retrospective-v1",
+  "target": "1H_match_total_goals_over_0.5",
+  "training_archive_start": "2018-08-01",
+  "development_season": 2024,
+  "holdout_season": 2025,
+  "forecast_lead_minutes": 60,
+  "lag_hours": 24,
+  "team_window": 20,
+  "smoothing": 10,
+  "C_grid": [0.1, 1.0, 10.0],
+  "calibration_candidates": ["identity", "sigmoid"],
+  "calibration_minimum": 500,
+  "calibration_minimum_each_outcome": 100,
+  "bootstrap_seed": 42,
+  "bootstrap_repetitions": 1000,
+  "policy": "Development selects configuration; holdout is reported once without tuning. All output remains unvalidated retrospective research."
+}

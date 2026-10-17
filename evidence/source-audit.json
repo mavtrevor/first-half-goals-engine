@@ -1,0 +1,227 @@
+{
+  "research_date": "2026-10-17",
+  "timezone": "Africa/Lagos",
+  "purpose": "Read-only football data feasibility checks; no model fitted",
+  "source": "OpenLigaDB documented public API",
+  "source_documentation": "https://github.com/OpenLigaDB/OpenLigaDB-Samples",
+  "source_data_license_notice": "https://www.openligadb.de/",
+  "seasons": [
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2018",
+      "retrievedUtc": "2026-10-17T08:20:01.3851205Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2019",
+      "retrievedUtc": "2026-10-17T08:20:02.8824988Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2020",
+      "retrievedUtc": "2026-10-17T08:20:03.8880213Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2021",
+      "retrievedUtc": "2026-10-17T08:20:05.0892112Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2022",
+      "retrievedUtc": "2026-10-17T08:19:43.6421931Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306,
+      "sampleResultKinds": [
+        "After90Minutes",
+        "HalfTime"
+      ],
+      "maxKickoff": "2023-05-27T13:30:00Z"
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2023",
+      "retrievedUtc": "2026-10-17T08:19:44.8909186Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306,
+      "sampleResultKinds": [
+        "HalfTime",
+        "After90Minutes"
+      ],
+      "maxKickoff": "2024-05-18T13:30:00Z"
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2024",
+      "retrievedUtc": "2026-10-17T08:19:45.7818661Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306,
+      "sampleResultKinds": [
+        "HalfTime",
+        "After90Minutes"
+      ],
+      "maxKickoff": "2025-05-17T13:30:00Z"
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2025",
+      "retrievedUtc": "2026-10-17T08:19:47.9100725Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 306,
+      "explicitHalfTime": 306,
+      "sampleResultKinds": [
+        "HalfTime",
+        "After90Minutes"
+      ],
+      "maxKickoff": "2026-05-16T13:30:00Z"
+    },
+    {
+      "url": "https://api.openligadb.de/getmatchdata/bl1/2026",
+      "retrievedUtc": "2026-10-17T08:19:49.2635778Z",
+      "matches": 306,
+      "uniqueMatchIds": 306,
+      "finished": 46,
+      "explicitHalfTime": 46,
+      "sampleResultKinds": [
+        "HalfTime",
+        "After90Minutes"
+      ],
+      "maxKickoff": "2027-05-22T13:30:00Z"
+    }
+  ],
+  "basic_score_checks": [
+    {
+      "season": 2018,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2019,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2020,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2021,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2022,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2023,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2024,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2025,
+      "invalidOrContradictoryScoreMatchIds": []
+    },
+    {
+      "season": 2026,
+      "invalidOrContradictoryScoreMatchIds": []
+    }
+  ],
+  "raw_response_file_hashes": [
+    {
+      "season": 2018,
+      "sha256": "AD707063BEBE18321AF6C0489AF1CEAFCB1871A777A85473A9BBAE8BD221AC25"
+    },
+    {
+      "season": 2019,
+      "sha256": "F8BA8882FA719EF9FDB04952E9F335D4593F390E2E97BA4AC58C4BC401A5ACF2"
+    },
+    {
+      "season": 2020,
+      "sha256": "B821C1954C840A293E65D32B0A292C9D965315099B8C9024F8718BB02146E27C"
+    },
+    {
+      "season": 2021,
+      "sha256": "BD98DA012063C36532E532388727A4605C04F25A1EE0D47FDFCFDD6ABAEF1721"
+    },
+    {
+      "season": 2022,
+      "sha256": "F5E604594F014C898A45E16D05C64BA6C4C5A4856174B167775F306D2D63CCA8"
+    },
+    {
+      "season": 2023,
+      "sha256": "4A868515FCF8CE37AE605DC9DBD6023C8008EFB4FD142BDCA4ECE393DD17C00E"
+    },
+    {
+      "season": 2024,
+      "sha256": "08A9C7198382F6E9C4C983976F53BC401639AC30A95C06798A2418BD26E2B6CF"
+    },
+    {
+      "season": 2025,
+      "sha256": "CECACE9D272EDDF0ECE700129E4296189D0699447A8E78467588A9C5E749BB6C"
+    },
+    {
+      "season": 2026,
+      "sha256": "520FB67794FD015DEEDD6556E79489DBE0D6DFF6604B655AB93F9BDFB944DA94"
+    }
+  ],
+  "sample_event_anomaly": {
+    "matchID": 63864,
+    "regularTimeResult": {
+      "pointsTeam1": 1,
+      "pointsTeam2": 6
+    },
+    "inconsistentGoalEvents": [
+      {
+        "scoreTeam1": 1,
+        "scoreTeam2": 7,
+        "matchMinute": null
+      }
+    ]
+  },
+  "limitations": [
+    "Field presence and simple consistency checks do not independently verify score accuracy.",
+    "No exhaustive score type validation, historical publication-time reconstruction or kickoff/status verification.",
+    "Season keys use starting year; future kickoff times may be provisional.",
+    "Separate effective access-terms page did not render substantive text.",
+    "No SportyBet API or authenticated free-provider entitlements tested.",
+    "No predictions, calibration, backtest or profitability results."
+  ],
+  "checks_run": [
+    "Season match count and within-season match-ID uniqueness",
+    "Finished flag count and exactly one HalfTime result per finished match",
+    "Exactly one regular-time score result for finished matches",
+    "No null/negative half-time team score or half-time team score exceeding regular-time score"
+  ],
+  "follow_up_audit": {
+    "date": "2026-10-17",
+    "comparison_rows": 2448,
+    "agree": 2302,
+    "score_disagreements": 20,
+    "officially_supported_corrections": 20,
+    "binary_target_changes": 15,
+    "reference_ht_missing": 126,
+    "sample_rows": 100,
+    "sample_agree": 83,
+    "sample_missing_reference_ht": 17,
+    "manual_100_match_gate": "pending",
+    "implementation_status": "hold_pending_feasibility_and_plan_review",
+    "corrections_applied": false,
+    "details": "phase-0-findings.md"
+  }
+}

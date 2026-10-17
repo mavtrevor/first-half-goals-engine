@@ -1,0 +1,13 @@
+{
+  "protocol_hash": "d4903c367c48129a4a458187b17e5464e8ff8105eddc37bcd620ac2b299d8fd0",
+  "selected_configuration": "10.0:sigmoid",
+  "development_losses": {
+    "0.1:identity": 0.5427018116418614,
+    "0.1:sigmoid": 0.5398965952491294,
+    "1.0:identity": 0.542543275123183,
+    "1.0:sigmoid": 0.5392714130478196,
+    "10.0:identity": 0.5425239061462293,
+    "10.0:sigmoid": 0.5392073908906447
+  },
+  "holdout_not_used_for_selection": true
+}

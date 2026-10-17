@@ -1,0 +1,16 @@
+{
+  "mode": "offline_research",
+  "source": "OpenLigaDB",
+  "data_license": "ODbL-1.0",
+  "data_license_notice": "https://www.openligadb.de/",
+  "license_text": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "live_access_enabled": false,
+  "live_access_reason": "Effective API access conditions not yet readable and reviewed",
+  "independent_score_audit_passed": false,
+  "current_fixture_checks_passed": false,
+  "nigeria_rules_verified": false,
+  "manual_code_workflow_verified": false,
+  "prospective_model_validation_passed": false,
+  "price_edge_supported": false,
+  "wager_execution": "excluded"
+}

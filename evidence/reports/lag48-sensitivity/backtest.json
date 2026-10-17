@@ -1,0 +1,4995 @@
+{
+  "protocol": {
+    "name": "bundesliga-retrospective-v1-lag48",
+    "target": "1H_match_total_goals_over_0.5",
+    "training_archive_start": "2018-08-01",
+    "development_season": 2024,
+    "holdout_season": 2025,
+    "forecast_lead_minutes": 60,
+    "lag_hours": 48,
+    "team_window": 20,
+    "smoothing": 10,
+    "C_grid": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "calibration_candidates": [
+      "identity",
+      "sigmoid"
+    ],
+    "calibration_minimum": 500,
+    "calibration_minimum_each_outcome": 100,
+    "bootstrap_seed": 42,
+    "bootstrap_repetitions": 1000,
+    "policy": "Development selects configuration; holdout is reported once without tuning. All output remains unvalidated retrospective research."
+  },
+  "protocol_hash": "a85dfa1b9adf89f0d234096247010754398820083166cb2db8f2fac645640400",
+  "selection": {
+    "protocol_hash": "a85dfa1b9adf89f0d234096247010754398820083166cb2db8f2fac645640400",
+    "selected_configuration": "10.0:sigmoid",
+    "development_losses": {
+      "0.1:identity": 0.5427390226507739,
+      "0.1:sigmoid": 0.5399216804562106,
+      "1.0:identity": 0.5425808137718636,
+      "1.0:sigmoid": 0.5393059060137979,
+      "10.0:identity": 0.5425614648751665,
+      "10.0:sigmoid": 0.539235738296842
+    },
+    "holdout_not_used_for_selection": true
+  },
+  "availability": "retrospective_reconstruction_not_historical_publication_snapshots",
+  "development": {
+    "count": 286,
+    "positives": 220,
+    "negatives": 66,
+    "brier": 0.1772140304082165,
+    "log_loss": 0.539235738296842,
+    "mean_prediction": 0.7701470520498358,
+    "observed_frequency": 0.7692307692307693,
+    "mean_calibration_gap": 0.0009162828190665273,
+    "auc": 0.5778925619834709,
+    "calibration_intercept": 0.4056539068082826,
+    "calibration_slope": 0.658423962936244,
+    "reliability": [
+      {
+        "count": 143,
+        "mean_prediction": 0.74615866817412,
+        "observed_frequency": 0.7132867132867133,
+        "frequency_95ci": [
+          0.6343488049956663,
+          0.7810648107644453
+        ]
+      },
+      {
+        "count": 143,
+        "mean_prediction": 0.7941354359255517,
+        "observed_frequency": 0.8251748251748252,
+        "frequency_95ci": [
+          0.754647868281688,
+          0.8786876442706133
+        ]
+      }
+    ],
+    "baseline": {
+      "count": 286,
+      "positives": 220,
+      "negatives": 66,
+      "brier": 0.17789294926160215,
+      "log_loss": 0.5412392513873424,
+      "mean_prediction": 0.7580659455517308,
+      "observed_frequency": 0.7692307692307693,
+      "mean_calibration_gap": 0.011164823679038482,
+      "auc": 0.4259986225895317,
+      "calibration_intercept": 24.085556902877407,
+      "calibration_slope": -20.01588361056402,
+      "reliability": [
+        {
+          "count": 143,
+          "mean_prediction": 0.7560530661692084,
+          "observed_frequency": 0.7972027972027972,
+          "frequency_95ci": [
+            0.7239294161695328,
+            0.8549256221847211
+          ]
+        },
+        {
+          "count": 143,
+          "mean_prediction": 0.760078824934253,
+          "observed_frequency": 0.7412587412587412,
+          "frequency_95ci": [
+            0.663831177988909,
+            0.80606291196925
+          ]
+        }
+      ]
+    },
+    "log_loss_difference": -0.0020035130905003973,
+    "log_loss_difference_95ci": [
+      -0.010075892185987395,
+      0.0067789774738903985
+    ],
+    "log_loss_difference_14day_95ci": [
+      -0.00978932449657177,
+      0.00627983983402329
+    ],
+    "release_state": "research",
+    "release_blockers": [
+      "independent_score_audit_pending",
+      "no_prospective_validation",
+      "no_SportyBet_price_history",
+      "current_fixture_checks_pending"
+    ],
+    "retrospective_metric_gate": false
+  },
+  "holdout": {
+    "count": 296,
+    "positives": 228,
+    "negatives": 68,
+    "brier": 0.17758956636120884,
+    "log_loss": 0.5402004455699569,
+    "mean_prediction": 0.773478629832131,
+    "observed_frequency": 0.7702702702702703,
+    "mean_calibration_gap": 0.0032083595618607186,
+    "auc": 0.5149638802889577,
+    "calibration_intercept": 0.9647215822643895,
+    "calibration_slope": 0.1987795444264023,
+    "reliability": [
+      {
+        "count": 148,
+        "mean_prediction": 0.7536313920663144,
+        "observed_frequency": 0.7567567567567568,
+        "frequency_95ci": [
+          0.6817091490832874,
+          0.8188124471064262
+        ]
+      },
+      {
+        "count": 148,
+        "mean_prediction": 0.7933258675979478,
+        "observed_frequency": 0.7837837837837838,
+        "frequency_95ci": [
+          0.7107324509459458,
+          0.8424756290532112
+        ]
+      }
+    ],
+    "baseline": {
+      "count": 296,
+      "positives": 228,
+      "negatives": 68,
+      "brier": 0.17702948800342413,
+      "log_loss": 0.5391584659600965,
+      "mean_prediction": 0.7638027877167717,
+      "observed_frequency": 0.7702702702702703,
+      "mean_calibration_gap": 0.006467482553498605,
+      "auc": 0.49532378740970073,
+      "calibration_intercept": 0.5092060941913108,
+      "calibration_slope": 0.5968546247787917,
+      "reliability": [
+        {
+          "count": 148,
+          "mean_prediction": 0.7605122633990199,
+          "observed_frequency": 0.7905405405405406,
+          "frequency_95ci": [
+            0.7180486840678373,
+            0.8483310168836806
+          ]
+        },
+        {
+          "count": 148,
+          "mean_prediction": 0.7670933120345231,
+          "observed_frequency": 0.75,
+          "frequency_95ci": [
+            0.6745102200876807,
+            0.812839755149672
+          ]
+        }
+      ]
+    },
+    "log_loss_difference": 0.0010419796098604106,
+    "log_loss_difference_95ci": [
+      -0.004981314217860953,
+      0.007444556817508107
+    ],
+    "log_loss_difference_14day_95ci": [
+      -0.004308911664418295,
+      0.007235604537210388
+    ],
+    "release_state": "research",
+    "release_blockers": [
+      "independent_score_audit_pending",
+      "no_prospective_validation",
+      "no_SportyBet_price_history",
+      "current_fixture_checks_pending"
+    ],
+    "retrospective_metric_gate": false
+  },
+  "folds": [
+    {
+      "month": "2024-08",
+      "training_count": 1076,
+      "calibration_count": 592,
+      "test_count": 12,
+      "state": "evaluated"
+    },
+    {
+      "month": "2024-09",
+      "training_count": 1112,
+      "calibration_count": 563,
+      "test_count": 23,
+      "state": "evaluated"
+    },
+    {
+      "month": "2024-10",
+      "training_count": 1139,
+      "calibration_count": 563,
+      "test_count": 21,
+      "state": "evaluated"
+    },
+    {
+      "month": "2024-11",
+      "training_count": 1184,
+      "calibration_count": 540,
+      "test_count": 30,
+      "state": "evaluated"
+    },
+    {
+      "month": "2024-12",
+      "training_count": 1211,
+      "calibration_count": 537,
+      "test_count": 29,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-01",
+      "training_count": 1211,
+      "calibration_count": 572,
+      "test_count": 37,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-02",
+      "training_count": 1238,
+      "calibration_count": 581,
+      "test_count": 36,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-03",
+      "training_count": 1274,
+      "calibration_count": 581,
+      "test_count": 35,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-04",
+      "training_count": 1301,
+      "calibration_count": 589,
+      "test_count": 36,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-05",
+      "training_count": 1344,
+      "calibration_count": 581,
+      "test_count": 27,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-08",
+      "training_count": 1382,
+      "calibration_count": 572,
+      "test_count": 16,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-09",
+      "training_count": 1396,
+      "calibration_count": 571,
+      "test_count": 24,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-10",
+      "training_count": 1418,
+      "calibration_count": 571,
+      "test_count": 25,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-11",
+      "training_count": 1445,
+      "calibration_count": 573,
+      "test_count": 33,
+      "state": "evaluated"
+    },
+    {
+      "month": "2025-12",
+      "training_count": 1451,
+      "calibration_count": 579,
+      "test_count": 27,
+      "state": "evaluated"
+    },
+    {
+      "month": "2026-01",
+      "training_count": 1442,
+      "calibration_count": 574,
+      "test_count": 42,
+      "state": "evaluated"
+    },
+    {
+      "month": "2026-02",
+      "training_count": 1451,
+      "calibration_count": 583,
+      "test_count": 35,
+      "state": "evaluated"
+    },
+    {
+      "month": "2026-03",
+      "training_count": 1452,
+      "calibration_count": 582,
+      "test_count": 31,
+      "state": "evaluated"
+    },
+    {
+      "month": "2026-04",
+      "training_count": 1449,
+      "calibration_count": 582,
+      "test_count": 36,
+      "state": "evaluated"
+    },
+    {
+      "month": "2026-05",
+      "training_count": 1452,
+      "calibration_count": 582,
+      "test_count": 27,
+      "state": "evaluated"
+    }
+  ],
+  "exclusions": [
+    {
+      "match_id": 51121,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51120,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51124,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51125,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51127,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51128,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51123,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51126,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51122,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51136,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51130,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51131,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51134,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51135,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51137,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51133,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51132,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51129,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51139,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51138,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51140,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51144,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51145,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51146,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51141,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51142,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51143,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51150,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51148,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51152,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51153,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51154,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51155,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51147,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51149,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51151,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51160,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51156,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51161,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51162,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51164,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51157,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51158,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51159,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51163,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51170,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51165,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51166,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51168,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51172,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51173,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51167,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51169,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51171,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51178,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51176,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51179,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51181,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51182,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51174,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51180,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51175,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51177,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51186,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51184,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51185,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51189,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51190,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51191,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51183,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51188,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51187,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51197,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51193,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51196,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51198,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51199,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51192,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51200,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51194,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51195,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51204,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51201,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51202,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51203,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51207,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51209,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51206,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51205,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 51208,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55279,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55281,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55285,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55293,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55292,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55294,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55298,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55301,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55303,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55310,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55312,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55311,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55313,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55314,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55319,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55330,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55329,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55328,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55339,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55338,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55334,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55348,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55347,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55354,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55349,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55357,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55363,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55366,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 55364,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58579,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58586,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58604,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58606,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58623,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58624,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58639,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58642,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58656,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 58661,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60851,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60853,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60856,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60859,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60867,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60868,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60877,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60873,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60885,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60883,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60895,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60891,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60903,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60905,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60914,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60923,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60919,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60932,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 60930,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66635,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66634,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66646,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66647,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66648,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66650,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66664,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66665,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66674,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66669,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66682,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66683,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66691,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66688,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66701,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66700,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66702,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66706,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66719,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 66718,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72217,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72222,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72229,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72231,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72240,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72236,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72248,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72249,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72254,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72258,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72259,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72267,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72270,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72276,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72277,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72285,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72290,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72294,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72298,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 72303,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77261,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77273,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77274,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77291,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77297,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77309,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77313,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77327,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77336,
+      "reason": "insufficient_team_history"
+    },
+    {
+      "match_id": 77345,
+      "reason": "insufficient_team_history"
+    }
+  ],
+  "predictions": [
+    {
+      "match_id": 77256,
+      "kickoff": "2025-08-22T18:30:00+00:00",
+      "cutoff": "2025-08-22T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "RB Leipzig",
+      "p": 0.8107774437020947,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77257,
+      "kickoff": "2025-08-23T13:30:00+00:00",
+      "cutoff": "2025-08-23T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "Bayer 04 Leverkusen",
+      "away": "TSG Hoffenheim",
+      "p": 0.7629214432289275,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77258,
+      "kickoff": "2025-08-23T13:30:00+00:00",
+      "cutoff": "2025-08-23T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "Eintracht Frankfurt",
+      "away": "SV Werder Bremen",
+      "p": 0.7868684956057241,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77259,
+      "kickoff": "2025-08-23T13:30:00+00:00",
+      "cutoff": "2025-08-23T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "SC Freiburg",
+      "away": "FC Augsburg",
+      "p": 0.784013031343655,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77262,
+      "kickoff": "2025-08-23T13:30:00+00:00",
+      "cutoff": "2025-08-23T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "1. FC Union Berlin",
+      "away": "VfB Stuttgart",
+      "p": 0.7842941997680432,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77264,
+      "kickoff": "2025-08-23T13:30:00+00:00",
+      "cutoff": "2025-08-23T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "1. FC Heidenheim 1846",
+      "away": "VfL Wolfsburg",
+      "p": 0.7430523137216832,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77263,
+      "kickoff": "2025-08-23T16:30:00+00:00",
+      "cutoff": "2025-08-23T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7591383812010444,
+      "home": "FC St. Pauli",
+      "away": "Borussia Dortmund",
+      "p": 0.7704581375116061,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77260,
+      "kickoff": "2025-08-24T13:30:00+00:00",
+      "cutoff": "2025-08-24T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7591383812010444,
+      "home": "1. FSV Mainz 05",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7699667596985564,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77266,
+      "kickoff": "2025-08-30T13:30:00+00:00",
+      "cutoff": "2025-08-30T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7592472420506164,
+      "home": "RB Leipzig",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7602323905444842,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77267,
+      "kickoff": "2025-08-30T13:30:00+00:00",
+      "cutoff": "2025-08-30T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "SV Werder Bremen",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7844465953805075,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77268,
+      "kickoff": "2025-08-30T13:30:00+00:00",
+      "cutoff": "2025-08-30T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7592472420506164,
+      "home": "VfB Stuttgart",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7827564692834383,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77271,
+      "kickoff": "2025-08-30T13:30:00+00:00",
+      "cutoff": "2025-08-30T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "TSG Hoffenheim",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7945968314081118,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77270,
+      "kickoff": "2025-08-30T16:30:00+00:00",
+      "cutoff": "2025-08-30T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "FC Augsburg",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7844461071797164,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77269,
+      "kickoff": "2025-08-31T13:30:00+00:00",
+      "cutoff": "2025-08-31T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "VfL Wolfsburg",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7286881395717582,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77265,
+      "kickoff": "2025-08-31T15:30:00+00:00",
+      "cutoff": "2025-08-31T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "Borussia Dortmund",
+      "away": "1. FC Union Berlin",
+      "p": 0.7798978275380342,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77272,
+      "kickoff": "2025-08-31T17:30:00+00:00",
+      "cutoff": "2025-08-31T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7592472420506164,
+      "home": "1. FC K\u00f6ln",
+      "away": "SC Freiburg",
+      "p": 0.7486904171196421,
+      "model_id": "174d80833d24215edc9ef345891e7b93d7d499e7fd43b1e4099b531500188191",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77275,
+      "kickoff": "2025-09-12T18:30:00+00:00",
+      "cutoff": "2025-09-12T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "Bayer 04 Leverkusen",
+      "away": "Eintracht Frankfurt",
+      "p": 0.797877035325248,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77276,
+      "kickoff": "2025-09-13T13:30:00+00:00",
+      "cutoff": "2025-09-13T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "SC Freiburg",
+      "away": "VfB Stuttgart",
+      "p": 0.7849404553647809,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77277,
+      "kickoff": "2025-09-13T13:30:00+00:00",
+      "cutoff": "2025-09-13T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "1. FSV Mainz 05",
+      "away": "RB Leipzig",
+      "p": 0.7889809370305652,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77279,
+      "kickoff": "2025-09-13T13:30:00+00:00",
+      "cutoff": "2025-09-13T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "VfL Wolfsburg",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7345237856823532,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77280,
+      "kickoff": "2025-09-13T13:30:00+00:00",
+      "cutoff": "2025-09-13T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "1. FC Union Berlin",
+      "away": "TSG Hoffenheim",
+      "p": 0.7537001991765272,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77282,
+      "kickoff": "2025-09-13T13:30:00+00:00",
+      "cutoff": "2025-09-13T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "1. FC Heidenheim 1846",
+      "away": "Borussia Dortmund",
+      "p": 0.7855361187255421,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77281,
+      "kickoff": "2025-09-14T13:30:00+00:00",
+      "cutoff": "2025-09-14T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "FC St. Pauli",
+      "away": "FC Augsburg",
+      "p": 0.7605738870553643,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77278,
+      "kickoff": "2025-09-14T15:30:00+00:00",
+      "cutoff": "2025-09-14T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7593548387096775,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "SV Werder Bremen",
+      "p": 0.7679885751072892,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77288,
+      "kickoff": "2025-09-19T18:30:00+00:00",
+      "cutoff": "2025-09-19T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "VfB Stuttgart",
+      "away": "FC St. Pauli",
+      "p": 0.7733706684565269,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77287,
+      "kickoff": "2025-09-20T13:30:00+00:00",
+      "cutoff": "2025-09-20T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "SV Werder Bremen",
+      "away": "SC Freiburg",
+      "p": 0.7716463172214463,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77289,
+      "kickoff": "2025-09-20T13:30:00+00:00",
+      "cutoff": "2025-09-20T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "FC Augsburg",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7232524254892179,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77290,
+      "kickoff": "2025-09-20T13:30:00+00:00",
+      "cutoff": "2025-09-20T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "TSG Hoffenheim",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8193863047056837,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77286,
+      "kickoff": "2025-09-20T16:30:00+00:00",
+      "cutoff": "2025-09-20T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "RB Leipzig",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7682453801166812,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77284,
+      "kickoff": "2025-09-21T13:30:00+00:00",
+      "cutoff": "2025-09-21T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "Eintracht Frankfurt",
+      "away": "1. FC Union Berlin",
+      "p": 0.775677288571736,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77283,
+      "kickoff": "2025-09-21T15:30:00+00:00",
+      "cutoff": "2025-09-21T14:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "Bayer 04 Leverkusen",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7913883589976933,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77285,
+      "kickoff": "2025-09-21T17:30:00+00:00",
+      "cutoff": "2025-09-21T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "Borussia Dortmund",
+      "away": "VfL Wolfsburg",
+      "p": 0.7626328906948928,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77292,
+      "kickoff": "2025-09-26T18:30:00+00:00",
+      "cutoff": "2025-09-26T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "SV Werder Bremen",
+      "p": 0.7987036512476225,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77294,
+      "kickoff": "2025-09-27T13:30:00+00:00",
+      "cutoff": "2025-09-27T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "1. FSV Mainz 05",
+      "away": "Borussia Dortmund",
+      "p": 0.8119775709853387,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77296,
+      "kickoff": "2025-09-27T13:30:00+00:00",
+      "cutoff": "2025-09-27T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "VfL Wolfsburg",
+      "away": "RB Leipzig",
+      "p": 0.7537476012553705,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77298,
+      "kickoff": "2025-09-27T13:30:00+00:00",
+      "cutoff": "2025-09-27T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "FC St. Pauli",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7549579369055778,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77299,
+      "kickoff": "2025-09-27T13:30:00+00:00",
+      "cutoff": "2025-09-27T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7613855035279025,
+      "home": "1. FC Heidenheim 1846",
+      "away": "FC Augsburg",
+      "p": 0.7546085776172196,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77295,
+      "kickoff": "2025-09-27T16:30:00+00:00",
+      "cutoff": "2025-09-27T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7816293972337962,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77293,
+      "kickoff": "2025-09-28T13:30:00+00:00",
+      "cutoff": "2025-09-28T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "SC Freiburg",
+      "away": "TSG Hoffenheim",
+      "p": 0.7507216286118699,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77300,
+      "kickoff": "2025-09-28T15:30:00+00:00",
+      "cutoff": "2025-09-28T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "1. FC K\u00f6ln",
+      "away": "VfB Stuttgart",
+      "p": 0.7521637104700645,
+      "model_id": "bd06187cc347c3d39ab95010ebddc0edb5e17cde4c6cc2e0bb4b1e70a36547f9",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77308,
+      "kickoff": "2025-10-03T18:30:00+00:00",
+      "cutoff": "2025-10-03T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "TSG Hoffenheim",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7805243132917105,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77301,
+      "kickoff": "2025-10-04T13:30:00+00:00",
+      "cutoff": "2025-10-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Bayer 04 Leverkusen",
+      "away": "1. FC Union Berlin",
+      "p": 0.7767043259812003,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77303,
+      "kickoff": "2025-10-04T13:30:00+00:00",
+      "cutoff": "2025-10-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Borussia Dortmund",
+      "away": "RB Leipzig",
+      "p": 0.8199766954359211,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77304,
+      "kickoff": "2025-10-04T13:30:00+00:00",
+      "cutoff": "2025-10-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "SV Werder Bremen",
+      "away": "FC St. Pauli",
+      "p": 0.7744238044958793,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77307,
+      "kickoff": "2025-10-04T13:30:00+00:00",
+      "cutoff": "2025-10-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "FC Augsburg",
+      "away": "VfL Wolfsburg",
+      "p": 0.7163942805974963,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77302,
+      "kickoff": "2025-10-04T16:30:00+00:00",
+      "cutoff": "2025-10-04T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Eintracht Frankfurt",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8526053931935742,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77305,
+      "kickoff": "2025-10-05T13:30:00+00:00",
+      "cutoff": "2025-10-05T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7613855035279025,
+      "home": "VfB Stuttgart",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.748698338422208,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77306,
+      "kickoff": "2025-10-05T17:30:00+00:00",
+      "cutoff": "2025-10-05T16:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7613855035279025,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "SC Freiburg",
+      "p": 0.7861267405799509,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77315,
+      "kickoff": "2025-10-17T18:30:00+00:00",
+      "cutoff": "2025-10-17T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "1. FC Union Berlin",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7724854487681989,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77312,
+      "kickoff": "2025-10-18T13:30:00+00:00",
+      "cutoff": "2025-10-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "1. FSV Mainz 05",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7769665954514087,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77314,
+      "kickoff": "2025-10-18T13:30:00+00:00",
+      "cutoff": "2025-10-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "VfL Wolfsburg",
+      "away": "VfB Stuttgart",
+      "p": 0.7604389168188627,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77317,
+      "kickoff": "2025-10-18T13:30:00+00:00",
+      "cutoff": "2025-10-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "1. FC Heidenheim 1846",
+      "away": "SV Werder Bremen",
+      "p": 0.7546428463726831,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77318,
+      "kickoff": "2025-10-18T13:30:00+00:00",
+      "cutoff": "2025-10-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "1. FC K\u00f6ln",
+      "away": "FC Augsburg",
+      "p": 0.7539747350617816,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77310,
+      "kickoff": "2025-10-18T16:30:00+00:00",
+      "cutoff": "2025-10-18T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "Borussia Dortmund",
+      "p": 0.8503394443239193,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77311,
+      "kickoff": "2025-10-19T13:30:00+00:00",
+      "cutoff": "2025-10-19T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "SC Freiburg",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7925287323562433,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77316,
+      "kickoff": "2025-10-19T15:30:00+00:00",
+      "cutoff": "2025-10-19T14:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "FC St. Pauli",
+      "away": "TSG Hoffenheim",
+      "p": 0.7520982612315242,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77322,
+      "kickoff": "2025-10-24T18:30:00+00:00",
+      "cutoff": "2025-10-24T17:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "SV Werder Bremen",
+      "away": "1. FC Union Berlin",
+      "p": 0.7744159578140118,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77320,
+      "kickoff": "2025-10-25T13:30:00+00:00",
+      "cutoff": "2025-10-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "Eintracht Frankfurt",
+      "away": "FC St. Pauli",
+      "p": 0.8053689910628923,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77324,
+      "kickoff": "2025-10-25T13:30:00+00:00",
+      "cutoff": "2025-10-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8289913719771475,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77325,
+      "kickoff": "2025-10-25T13:30:00+00:00",
+      "cutoff": "2025-10-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "FC Augsburg",
+      "away": "RB Leipzig",
+      "p": 0.7725420791042896,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77326,
+      "kickoff": "2025-10-25T13:30:00+00:00",
+      "cutoff": "2025-10-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "TSG Hoffenheim",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7552390315315762,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77321,
+      "kickoff": "2025-10-25T16:30:00+00:00",
+      "cutoff": "2025-10-25T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "Borussia Dortmund",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7983765222906846,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77319,
+      "kickoff": "2025-10-26T14:30:00+00:00",
+      "cutoff": "2025-10-26T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "Bayer 04 Leverkusen",
+      "away": "SC Freiburg",
+      "p": 0.7969749516334028,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77323,
+      "kickoff": "2025-10-26T16:30:00+00:00",
+      "cutoff": "2025-10-26T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "VfB Stuttgart",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7484278631208238,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77332,
+      "kickoff": "2025-10-31T19:30:00+00:00",
+      "cutoff": "2025-10-31T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "FC Augsburg",
+      "away": "Borussia Dortmund",
+      "p": 0.8051088033422912,
+      "model_id": "9e58f6f828ae5df5a2021a72d5962405a2498770ca430b72b53efc6ee8d0e14f",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77329,
+      "kickoff": "2025-11-01T14:30:00+00:00",
+      "cutoff": "2025-11-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "1. FSV Mainz 05",
+      "away": "SV Werder Bremen",
+      "p": 0.779167327651703,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77330,
+      "kickoff": "2025-11-01T14:30:00+00:00",
+      "cutoff": "2025-11-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "RB Leipzig",
+      "away": "VfB Stuttgart",
+      "p": 0.8121366279398199,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77333,
+      "kickoff": "2025-11-01T14:30:00+00:00",
+      "cutoff": "2025-11-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7594611930724824,
+      "home": "1. FC Union Berlin",
+      "away": "SC Freiburg",
+      "p": 0.7610123550257746,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77334,
+      "kickoff": "2025-11-01T14:30:00+00:00",
+      "cutoff": "2025-11-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "FC St. Pauli",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7106886042398682,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77335,
+      "kickoff": "2025-11-01T14:30:00+00:00",
+      "cutoff": "2025-11-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "1. FC Heidenheim 1846",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7521457244206116,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77328,
+      "kickoff": "2025-11-01T17:30:00+00:00",
+      "cutoff": "2025-11-01T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.829865192001614,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77331,
+      "kickoff": "2025-11-02T16:30:00+00:00",
+      "cutoff": "2025-11-02T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "VfL Wolfsburg",
+      "away": "TSG Hoffenheim",
+      "p": 0.735947815339165,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77340,
+      "kickoff": "2025-11-07T19:30:00+00:00",
+      "cutoff": "2025-11-07T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "SV Werder Bremen",
+      "away": "VfL Wolfsburg",
+      "p": 0.7143431094471951,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77337,
+      "kickoff": "2025-11-08T14:30:00+00:00",
+      "cutoff": "2025-11-08T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Bayer 04 Leverkusen",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7624186761040075,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77343,
+      "kickoff": "2025-11-08T14:30:00+00:00",
+      "cutoff": "2025-11-08T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "1. FC Union Berlin",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8373128107333208,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77344,
+      "kickoff": "2025-11-08T14:30:00+00:00",
+      "cutoff": "2025-11-08T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "TSG Hoffenheim",
+      "away": "RB Leipzig",
+      "p": 0.8084718547466487,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77342,
+      "kickoff": "2025-11-08T17:30:00+00:00",
+      "cutoff": "2025-11-08T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7654817325164599,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77339,
+      "kickoff": "2025-11-09T14:30:00+00:00",
+      "cutoff": "2025-11-09T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "SC Freiburg",
+      "away": "FC St. Pauli",
+      "p": 0.7328462229843988,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77341,
+      "kickoff": "2025-11-09T16:30:00+00:00",
+      "cutoff": "2025-11-09T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7613855035279025,
+      "home": "VfB Stuttgart",
+      "away": "FC Augsburg",
+      "p": 0.7506349331500166,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77338,
+      "kickoff": "2025-11-09T18:30:00+00:00",
+      "cutoff": "2025-11-09T17:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7613855035279025,
+      "home": "Eintracht Frankfurt",
+      "away": "1. FSV Mainz 05",
+      "p": 0.764045848016896,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77348,
+      "kickoff": "2025-11-21T19:30:00+00:00",
+      "cutoff": "2025-11-21T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "1. FSV Mainz 05",
+      "away": "TSG Hoffenheim",
+      "p": 0.7843327413266175,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77346,
+      "kickoff": "2025-11-22T14:30:00+00:00",
+      "cutoff": "2025-11-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "SC Freiburg",
+      "p": 0.8122577718580033,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77347,
+      "kickoff": "2025-11-22T14:30:00+00:00",
+      "cutoff": "2025-11-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "Borussia Dortmund",
+      "away": "VfB Stuttgart",
+      "p": 0.8048365814125437,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77350,
+      "kickoff": "2025-11-22T14:30:00+00:00",
+      "cutoff": "2025-11-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "VfL Wolfsburg",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7639591727985278,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77351,
+      "kickoff": "2025-11-22T14:30:00+00:00",
+      "cutoff": "2025-11-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "FC Augsburg",
+      "away": "Hamburger SV",
+      "p": 0.8212761091339696,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77353,
+      "kickoff": "2025-11-22T14:30:00+00:00",
+      "cutoff": "2025-11-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "1. FC Heidenheim 1846",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7038441234078759,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77354,
+      "kickoff": "2025-11-22T17:30:00+00:00",
+      "cutoff": "2025-11-22T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "1. FC K\u00f6ln",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7783547798336885,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77349,
+      "kickoff": "2025-11-23T14:30:00+00:00",
+      "cutoff": "2025-11-23T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7607440667094291,
+      "home": "RB Leipzig",
+      "away": "SV Werder Bremen",
+      "p": 0.801417537450252,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77352,
+      "kickoff": "2025-11-23T16:30:00+00:00",
+      "cutoff": "2025-11-23T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7607440667094291,
+      "home": "FC St. Pauli",
+      "away": "1. FC Union Berlin",
+      "p": 0.7555843220014838,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77360,
+      "kickoff": "2025-11-28T19:30:00+00:00",
+      "cutoff": "2025-11-28T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7594611930724824,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "RB Leipzig",
+      "p": 0.8009712229186027,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77355,
+      "kickoff": "2025-11-29T14:30:00+00:00",
+      "cutoff": "2025-11-29T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "FC St. Pauli",
+      "p": 0.7900859153817917,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77359,
+      "kickoff": "2025-11-29T14:30:00+00:00",
+      "cutoff": "2025-11-29T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "SV Werder Bremen",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7559704062493917,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77361,
+      "kickoff": "2025-11-29T14:30:00+00:00",
+      "cutoff": "2025-11-29T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "1. FC Union Berlin",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7197525746858616,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77362,
+      "kickoff": "2025-11-29T14:30:00+00:00",
+      "cutoff": "2025-11-29T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "TSG Hoffenheim",
+      "away": "FC Augsburg",
+      "p": 0.7508124523584856,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77356,
+      "kickoff": "2025-11-29T17:30:00+00:00",
+      "cutoff": "2025-11-29T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "Bayer 04 Leverkusen",
+      "away": "Borussia Dortmund",
+      "p": 0.8559914132698565,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77363,
+      "kickoff": "2025-11-30T14:30:00+00:00",
+      "cutoff": "2025-11-30T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "Hamburger SV",
+      "away": "VfB Stuttgart",
+      "p": 0.652671943648193,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77357,
+      "kickoff": "2025-11-30T16:30:00+00:00",
+      "cutoff": "2025-11-30T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7594611930724824,
+      "home": "Eintracht Frankfurt",
+      "away": "VfL Wolfsburg",
+      "p": 0.7523496056451963,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77358,
+      "kickoff": "2025-11-30T18:30:00+00:00",
+      "cutoff": "2025-11-30T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "SC Freiburg",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7349816517247478,
+      "model_id": "81d630b23c47a244d33e5d49028248ce71cbdcb62c93cabb2d36de28b9667cdd",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77365,
+      "kickoff": "2025-12-05T19:30:00+00:00",
+      "cutoff": "2025-12-05T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7594611930724824,
+      "home": "1. FSV Mainz 05",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7612132128134745,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77367,
+      "kickoff": "2025-12-06T14:30:00+00:00",
+      "cutoff": "2025-12-06T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "VfB Stuttgart",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8337672289719594,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77368,
+      "kickoff": "2025-12-06T14:30:00+00:00",
+      "cutoff": "2025-12-06T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "VfL Wolfsburg",
+      "away": "1. FC Union Berlin",
+      "p": 0.7693791288796352,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77369,
+      "kickoff": "2025-12-06T14:30:00+00:00",
+      "cutoff": "2025-12-06T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "FC Augsburg",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.788720284834639,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77370,
+      "kickoff": "2025-12-06T14:30:00+00:00",
+      "cutoff": "2025-12-06T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "1. FC Heidenheim 1846",
+      "away": "SC Freiburg",
+      "p": 0.7505781230846709,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77371,
+      "kickoff": "2025-12-06T14:30:00+00:00",
+      "cutoff": "2025-12-06T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7594611930724824,
+      "home": "1. FC K\u00f6ln",
+      "away": "FC St. Pauli",
+      "p": 0.7327812469173287,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77366,
+      "kickoff": "2025-12-06T17:30:00+00:00",
+      "cutoff": "2025-12-06T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "RB Leipzig",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7979457934259621,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77372,
+      "kickoff": "2025-12-07T14:30:00+00:00",
+      "cutoff": "2025-12-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "Hamburger SV",
+      "away": "SV Werder Bremen",
+      "p": 0.6887559797816813,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77364,
+      "kickoff": "2025-12-07T16:30:00+00:00",
+      "cutoff": "2025-12-07T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7594611930724824,
+      "home": "Borussia Dortmund",
+      "away": "TSG Hoffenheim",
+      "p": 0.8003972921511728,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77379,
+      "kickoff": "2025-12-12T19:30:00+00:00",
+      "cutoff": "2025-12-12T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7581783194355356,
+      "home": "1. FC Union Berlin",
+      "away": "RB Leipzig",
+      "p": 0.8014914716942307,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77375,
+      "kickoff": "2025-12-13T14:30:00+00:00",
+      "cutoff": "2025-12-13T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7581783194355356,
+      "home": "Eintracht Frankfurt",
+      "away": "FC Augsburg",
+      "p": 0.7713735622433773,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77378,
+      "kickoff": "2025-12-13T14:30:00+00:00",
+      "cutoff": "2025-12-13T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "VfL Wolfsburg",
+      "p": 0.742730010905775,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77380,
+      "kickoff": "2025-12-13T14:30:00+00:00",
+      "cutoff": "2025-12-13T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "FC St. Pauli",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7161595817377525,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77381,
+      "kickoff": "2025-12-13T14:30:00+00:00",
+      "cutoff": "2025-12-13T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "TSG Hoffenheim",
+      "away": "Hamburger SV",
+      "p": 0.8399249141737617,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77374,
+      "kickoff": "2025-12-13T17:30:00+00:00",
+      "cutoff": "2025-12-13T16:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7581783194355356,
+      "home": "Bayer 04 Leverkusen",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7919561910494265,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77376,
+      "kickoff": "2025-12-14T14:30:00+00:00",
+      "cutoff": "2025-12-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "SC Freiburg",
+      "away": "Borussia Dortmund",
+      "p": 0.8175911678661129,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77373,
+      "kickoff": "2025-12-14T16:30:00+00:00",
+      "cutoff": "2025-12-14T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7839931690418884,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77377,
+      "kickoff": "2025-12-14T18:30:00+00:00",
+      "cutoff": "2025-12-14T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7581783194355356,
+      "home": "SV Werder Bremen",
+      "away": "VfB Stuttgart",
+      "p": 0.7624192657176456,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77382,
+      "kickoff": "2025-12-19T19:30:00+00:00",
+      "cutoff": "2025-12-19T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7586649550706034,
+      "home": "Borussia Dortmund",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7676011378344344,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77385,
+      "kickoff": "2025-12-20T14:30:00+00:00",
+      "cutoff": "2025-12-20T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7588424437299035,
+      "home": "VfB Stuttgart",
+      "away": "TSG Hoffenheim",
+      "p": 0.7995307202648587,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77386,
+      "kickoff": "2025-12-20T14:30:00+00:00",
+      "cutoff": "2025-12-20T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7588424437299035,
+      "home": "VfL Wolfsburg",
+      "away": "SC Freiburg",
+      "p": 0.7721855630040447,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77387,
+      "kickoff": "2025-12-20T14:30:00+00:00",
+      "cutoff": "2025-12-20T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7588424437299035,
+      "home": "FC Augsburg",
+      "away": "SV Werder Bremen",
+      "p": 0.7630301032677939,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77389,
+      "kickoff": "2025-12-20T14:30:00+00:00",
+      "cutoff": "2025-12-20T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7588424437299035,
+      "home": "1. FC K\u00f6ln",
+      "away": "1. FC Union Berlin",
+      "p": 0.7662460016372711,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77390,
+      "kickoff": "2025-12-20T14:30:00+00:00",
+      "cutoff": "2025-12-20T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7588424437299035,
+      "home": "Hamburger SV",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7228827726740275,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77384,
+      "kickoff": "2025-12-20T17:30:00+00:00",
+      "cutoff": "2025-12-20T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7588424437299035,
+      "home": "RB Leipzig",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.8003515986832133,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77383,
+      "kickoff": "2025-12-21T14:30:00+00:00",
+      "cutoff": "2025-12-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.76,
+      "home": "1. FSV Mainz 05",
+      "away": "FC St. Pauli",
+      "p": 0.7518529033302834,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77388,
+      "kickoff": "2025-12-21T16:30:00+00:00",
+      "cutoff": "2025-12-21T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.76,
+      "home": "1. FC Heidenheim 1846",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8109407158696647,
+      "model_id": "0fd09debbeb44a41104e8f56d6dc34ddd1fb932e81ec02d66f799de0d9a211bf",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77393,
+      "kickoff": "2026-01-09T19:30:00+00:00",
+      "cutoff": "2026-01-09T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "Eintracht Frankfurt",
+      "away": "Borussia Dortmund",
+      "p": 0.7934301197012251,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77394,
+      "kickoff": "2026-01-10T14:30:00+00:00",
+      "cutoff": "2026-01-10T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7624918883841661,
+      "home": "SC Freiburg",
+      "away": "Hamburger SV",
+      "p": 0.7873310399363159,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77398,
+      "kickoff": "2026-01-10T14:30:00+00:00",
+      "cutoff": "2026-01-10T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "1. FC Union Berlin",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7641681957103253,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77400,
+      "kickoff": "2026-01-10T14:30:00+00:00",
+      "cutoff": "2026-01-10T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "1. FC Heidenheim 1846",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7598947620031127,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77392,
+      "kickoff": "2026-01-10T17:30:00+00:00",
+      "cutoff": "2026-01-10T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "Bayer 04 Leverkusen",
+      "away": "VfB Stuttgart",
+      "p": 0.7869858003273786,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77397,
+      "kickoff": "2026-01-11T14:30:00+00:00",
+      "cutoff": "2026-01-11T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "FC Augsburg",
+      "p": 0.7596291984665688,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77391,
+      "kickoff": "2026-01-11T16:30:00+00:00",
+      "cutoff": "2026-01-11T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7624918883841661,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "VfL Wolfsburg",
+      "p": 0.784459852583684,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77404,
+      "kickoff": "2026-01-13T17:30:00+00:00",
+      "cutoff": "2026-01-13T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7626459143968871,
+      "home": "VfB Stuttgart",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7775883252103404,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77401,
+      "kickoff": "2026-01-13T19:30:00+00:00",
+      "cutoff": "2026-01-13T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.763140817650876,
+      "home": "Borussia Dortmund",
+      "away": "SV Werder Bremen",
+      "p": 0.775320871913589,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77402,
+      "kickoff": "2026-01-13T19:30:00+00:00",
+      "cutoff": "2026-01-13T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.763140817650876,
+      "home": "1. FSV Mainz 05",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7632301531163173,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77405,
+      "kickoff": "2026-01-14T17:30:00+00:00",
+      "cutoff": "2026-01-14T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.762987012987013,
+      "home": "VfL Wolfsburg",
+      "away": "FC St. Pauli",
+      "p": 0.7639455416616769,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77403,
+      "kickoff": "2026-01-14T19:30:00+00:00",
+      "cutoff": "2026-01-14T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7634827810266407,
+      "home": "RB Leipzig",
+      "away": "SC Freiburg",
+      "p": 0.7753791369992218,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77407,
+      "kickoff": "2026-01-14T19:30:00+00:00",
+      "cutoff": "2026-01-14T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7634827810266407,
+      "home": "TSG Hoffenheim",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7753012089272134,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77408,
+      "kickoff": "2026-01-14T19:30:00+00:00",
+      "cutoff": "2026-01-14T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7634827810266407,
+      "home": "1. FC K\u00f6ln",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7920977808737072,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77406,
+      "kickoff": "2026-01-15T19:30:00+00:00",
+      "cutoff": "2026-01-15T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7636363636363637,
+      "home": "FC Augsburg",
+      "away": "1. FC Union Berlin",
+      "p": 0.7741851682448994,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77412,
+      "kickoff": "2026-01-16T19:30:00+00:00",
+      "cutoff": "2026-01-16T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7640959170447181,
+      "home": "SV Werder Bremen",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7697565814194738,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77410,
+      "kickoff": "2026-01-17T14:30:00+00:00",
+      "cutoff": "2026-01-17T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639068564036222,
+      "home": "Borussia Dortmund",
+      "away": "FC St. Pauli",
+      "p": 0.7708860909432155,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77414,
+      "kickoff": "2026-01-17T14:30:00+00:00",
+      "cutoff": "2026-01-17T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639068564036222,
+      "home": "VfL Wolfsburg",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7637317690487572,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77416,
+      "kickoff": "2026-01-17T14:30:00+00:00",
+      "cutoff": "2026-01-17T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639068564036222,
+      "home": "TSG Hoffenheim",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7854020375171987,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77417,
+      "kickoff": "2026-01-17T14:30:00+00:00",
+      "cutoff": "2026-01-17T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639068564036222,
+      "home": "1. FC K\u00f6ln",
+      "away": "1. FSV Mainz 05",
+      "p": 0.766292799358956,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77418,
+      "kickoff": "2026-01-17T14:30:00+00:00",
+      "cutoff": "2026-01-17T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7639068564036222,
+      "home": "Hamburger SV",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7453601971611964,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77411,
+      "kickoff": "2026-01-17T17:30:00+00:00",
+      "cutoff": "2026-01-17T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639068564036222,
+      "home": "RB Leipzig",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7944646052398924,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77413,
+      "kickoff": "2026-01-18T14:30:00+00:00",
+      "cutoff": "2026-01-18T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7640594699418228,
+      "home": "VfB Stuttgart",
+      "away": "1. FC Union Berlin",
+      "p": 0.7742865585804541,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77415,
+      "kickoff": "2026-01-18T16:30:00+00:00",
+      "cutoff": "2026-01-18T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7640594699418228,
+      "home": "FC Augsburg",
+      "away": "SC Freiburg",
+      "p": 0.7728519038322932,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77426,
+      "kickoff": "2026-01-23T19:30:00+00:00",
+      "cutoff": "2026-01-23T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7658473479948253,
+      "home": "FC St. Pauli",
+      "away": "Hamburger SV",
+      "p": 0.7753554838691282,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77419,
+      "kickoff": "2026-01-24T14:30:00+00:00",
+      "cutoff": "2026-01-24T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7660401814646792,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "FC Augsburg",
+      "p": 0.7834606528776297,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77420,
+      "kickoff": "2026-01-24T14:30:00+00:00",
+      "cutoff": "2026-01-24T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7660401814646792,
+      "home": "Bayer 04 Leverkusen",
+      "away": "SV Werder Bremen",
+      "p": 0.7827852659428417,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77421,
+      "kickoff": "2026-01-24T14:30:00+00:00",
+      "cutoff": "2026-01-24T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7660401814646792,
+      "home": "Eintracht Frankfurt",
+      "away": "TSG Hoffenheim",
+      "p": 0.7952292182394287,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77423,
+      "kickoff": "2026-01-24T14:30:00+00:00",
+      "cutoff": "2026-01-24T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7660401814646792,
+      "home": "1. FSV Mainz 05",
+      "away": "VfL Wolfsburg",
+      "p": 0.768834002729279,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77427,
+      "kickoff": "2026-01-24T14:30:00+00:00",
+      "cutoff": "2026-01-24T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7660401814646792,
+      "home": "1. FC Heidenheim 1846",
+      "away": "RB Leipzig",
+      "p": 0.7781591707016237,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77425,
+      "kickoff": "2026-01-24T17:30:00+00:00",
+      "cutoff": "2026-01-24T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7660401814646792,
+      "home": "1. FC Union Berlin",
+      "away": "Borussia Dortmund",
+      "p": 0.7750369180457998,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77424,
+      "kickoff": "2026-01-25T14:30:00+00:00",
+      "cutoff": "2026-01-25T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7659297789336801,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "VfB Stuttgart",
+      "p": 0.7689323241047434,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77422,
+      "kickoff": "2026-01-25T16:30:00+00:00",
+      "cutoff": "2026-01-25T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7659297789336801,
+      "home": "SC Freiburg",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7670234795978497,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77395,
+      "kickoff": "2026-01-27T19:30:00+00:00",
+      "cutoff": "2026-01-27T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "SV Werder Bremen",
+      "away": "TSG Hoffenheim",
+      "p": 0.7778248457637698,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77399,
+      "kickoff": "2026-01-27T19:30:00+00:00",
+      "cutoff": "2026-01-27T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7649350649350649,
+      "home": "FC St. Pauli",
+      "away": "RB Leipzig",
+      "p": 0.7790370800309234,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77435,
+      "kickoff": "2026-01-30T19:30:00+00:00",
+      "cutoff": "2026-01-30T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "1. FC K\u00f6ln",
+      "away": "VfL Wolfsburg",
+      "p": 0.770361809782281,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77428,
+      "kickoff": "2026-01-31T14:30:00+00:00",
+      "cutoff": "2026-01-31T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "Eintracht Frankfurt",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7863299419368109,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77430,
+      "kickoff": "2026-01-31T14:30:00+00:00",
+      "cutoff": "2026-01-31T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "RB Leipzig",
+      "away": "1. FSV Mainz 05",
+      "p": 0.768400851810509,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77431,
+      "kickoff": "2026-01-31T14:30:00+00:00",
+      "cutoff": "2026-01-31T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7642857142857142,
+      "home": "SV Werder Bremen",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.762189708485792,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77433,
+      "kickoff": "2026-01-31T14:30:00+00:00",
+      "cutoff": "2026-01-31T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "FC Augsburg",
+      "away": "FC St. Pauli",
+      "p": 0.760334548455859,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77434,
+      "kickoff": "2026-01-31T14:30:00+00:00",
+      "cutoff": "2026-01-31T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "TSG Hoffenheim",
+      "away": "1. FC Union Berlin",
+      "p": 0.7773927613310124,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77436,
+      "kickoff": "2026-01-31T17:30:00+00:00",
+      "cutoff": "2026-01-31T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "Hamburger SV",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7788457322176277,
+      "model_id": "9e14cebdcb9d3701016d87fc0cd57cbcd9e6da5163c2ff965529ee237e0b256e",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77432,
+      "kickoff": "2026-02-01T14:30:00+00:00",
+      "cutoff": "2026-02-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7642857142857142,
+      "home": "VfB Stuttgart",
+      "away": "SC Freiburg",
+      "p": 0.7840450509587171,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77429,
+      "kickoff": "2026-02-01T16:30:00+00:00",
+      "cutoff": "2026-02-01T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7642857142857142,
+      "home": "Borussia Dortmund",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7598034777341275,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77442,
+      "kickoff": "2026-02-06T19:30:00+00:00",
+      "cutoff": "2026-02-06T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7649350649350649,
+      "home": "1. FC Union Berlin",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7716154575092864,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77438,
+      "kickoff": "2026-02-07T14:30:00+00:00",
+      "cutoff": "2026-02-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "SC Freiburg",
+      "away": "SV Werder Bremen",
+      "p": 0.7523256254676924,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77439,
+      "kickoff": "2026-02-07T14:30:00+00:00",
+      "cutoff": "2026-02-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "1. FSV Mainz 05",
+      "away": "FC Augsburg",
+      "p": 0.7673214319378701,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77441,
+      "kickoff": "2026-02-07T14:30:00+00:00",
+      "cutoff": "2026-02-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "VfL Wolfsburg",
+      "away": "Borussia Dortmund",
+      "p": 0.7995144549777493,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77443,
+      "kickoff": "2026-02-07T14:30:00+00:00",
+      "cutoff": "2026-02-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "FC St. Pauli",
+      "away": "VfB Stuttgart",
+      "p": 0.7725686453932913,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77444,
+      "kickoff": "2026-02-07T14:30:00+00:00",
+      "cutoff": "2026-02-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "1. FC Heidenheim 1846",
+      "away": "Hamburger SV",
+      "p": 0.7637199991283433,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77440,
+      "kickoff": "2026-02-07T17:30:00+00:00",
+      "cutoff": "2026-02-07T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7837853501860272,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77445,
+      "kickoff": "2026-02-08T14:30:00+00:00",
+      "cutoff": "2026-02-08T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "1. FC K\u00f6ln",
+      "away": "RB Leipzig",
+      "p": 0.7888754379332543,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77437,
+      "kickoff": "2026-02-08T16:30:00+00:00",
+      "cutoff": "2026-02-08T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7649350649350649,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "TSG Hoffenheim",
+      "p": 0.8257347744590607,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77448,
+      "kickoff": "2026-02-13T19:30:00+00:00",
+      "cutoff": "2026-02-13T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "Borussia Dortmund",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7732773651451782,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77446,
+      "kickoff": "2026-02-14T14:30:00+00:00",
+      "cutoff": "2026-02-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "Bayer 04 Leverkusen",
+      "away": "FC St. Pauli",
+      "p": 0.7896543280483469,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77447,
+      "kickoff": "2026-02-14T14:30:00+00:00",
+      "cutoff": "2026-02-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "Eintracht Frankfurt",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7817965482378879,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77450,
+      "kickoff": "2026-02-14T14:30:00+00:00",
+      "cutoff": "2026-02-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "SV Werder Bremen",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8020643339802894,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77453,
+      "kickoff": "2026-02-14T14:30:00+00:00",
+      "cutoff": "2026-02-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7650876054510058,
+      "home": "TSG Hoffenheim",
+      "away": "SC Freiburg",
+      "p": 0.795605190056854,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77454,
+      "kickoff": "2026-02-14T14:30:00+00:00",
+      "cutoff": "2026-02-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "Hamburger SV",
+      "away": "1. FC Union Berlin",
+      "p": 0.7551648522324226,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77451,
+      "kickoff": "2026-02-14T17:30:00+00:00",
+      "cutoff": "2026-02-14T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7650876054510058,
+      "home": "VfB Stuttgart",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7759787284435654,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77452,
+      "kickoff": "2026-02-15T14:30:00+00:00",
+      "cutoff": "2026-02-15T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7650876054510058,
+      "home": "FC Augsburg",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7553881163598898,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77449,
+      "kickoff": "2026-02-15T16:30:00+00:00",
+      "cutoff": "2026-02-15T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7650876054510058,
+      "home": "RB Leipzig",
+      "away": "VfL Wolfsburg",
+      "p": 0.7677600928265121,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77457,
+      "kickoff": "2026-02-20T19:30:00+00:00",
+      "cutoff": "2026-02-20T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "1. FSV Mainz 05",
+      "away": "Hamburger SV",
+      "p": 0.7761592484399993,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77455,
+      "kickoff": "2026-02-21T14:30:00+00:00",
+      "cutoff": "2026-02-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "Eintracht Frankfurt",
+      "p": 0.8059845700189773,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77459,
+      "kickoff": "2026-02-21T14:30:00+00:00",
+      "cutoff": "2026-02-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "VfL Wolfsburg",
+      "away": "FC Augsburg",
+      "p": 0.7640806623001766,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77460,
+      "kickoff": "2026-02-21T14:30:00+00:00",
+      "cutoff": "2026-02-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "1. FC Union Berlin",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7871829859764208,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77463,
+      "kickoff": "2026-02-21T14:30:00+00:00",
+      "cutoff": "2026-02-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "1. FC K\u00f6ln",
+      "away": "TSG Hoffenheim",
+      "p": 0.802018289278107,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77458,
+      "kickoff": "2026-02-21T17:30:00+00:00",
+      "cutoff": "2026-02-21T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "RB Leipzig",
+      "away": "Borussia Dortmund",
+      "p": 0.7961950832372869,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77456,
+      "kickoff": "2026-02-22T14:30:00+00:00",
+      "cutoff": "2026-02-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "SC Freiburg",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7572696121259715,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77461,
+      "kickoff": "2026-02-22T16:30:00+00:00",
+      "cutoff": "2026-02-22T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7657365347177157,
+      "home": "FC St. Pauli",
+      "away": "SV Werder Bremen",
+      "p": 0.74940996448829,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77462,
+      "kickoff": "2026-02-22T18:30:00+00:00",
+      "cutoff": "2026-02-22T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7657365347177157,
+      "home": "1. FC Heidenheim 1846",
+      "away": "VfB Stuttgart",
+      "p": 0.7748275028340899,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77470,
+      "kickoff": "2026-02-27T19:30:00+00:00",
+      "cutoff": "2026-02-27T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7663854639844258,
+      "home": "FC Augsburg",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7646584403777557,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77464,
+      "kickoff": "2026-02-28T14:30:00+00:00",
+      "cutoff": "2026-02-28T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7663854639844258,
+      "home": "Bayer 04 Leverkusen",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7966423729033298,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77467,
+      "kickoff": "2026-02-28T14:30:00+00:00",
+      "cutoff": "2026-02-28T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7663854639844258,
+      "home": "SV Werder Bremen",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7407098171884762,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77469,
+      "kickoff": "2026-02-28T14:30:00+00:00",
+      "cutoff": "2026-02-28T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7663854639844258,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "1. FC Union Berlin",
+      "p": 0.7724013897525587,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77471,
+      "kickoff": "2026-02-28T14:30:00+00:00",
+      "cutoff": "2026-02-28T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7663854639844258,
+      "home": "TSG Hoffenheim",
+      "away": "FC St. Pauli",
+      "p": 0.7728782067570786,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77466,
+      "kickoff": "2026-02-28T17:30:00+00:00",
+      "cutoff": "2026-02-28T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7663854639844258,
+      "home": "Borussia Dortmund",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.8118948864878435,
+      "model_id": "8482232bb2e1ea9342e895e745d6db608573fa9f6dc6363b18ddcfc17224e3c4",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77468,
+      "kickoff": "2026-03-01T14:30:00+00:00",
+      "cutoff": "2026-03-01T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7663854639844258,
+      "home": "VfB Stuttgart",
+      "away": "VfL Wolfsburg",
+      "p": 0.7807495030640549,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77465,
+      "kickoff": "2026-03-01T16:30:00+00:00",
+      "cutoff": "2026-03-01T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7663854639844258,
+      "home": "Eintracht Frankfurt",
+      "away": "SC Freiburg",
+      "p": 0.8031887998441481,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77472,
+      "kickoff": "2026-03-01T18:30:00+00:00",
+      "cutoff": "2026-03-01T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7663854639844258,
+      "home": "Hamburger SV",
+      "away": "RB Leipzig",
+      "p": 0.7922122607712486,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77409,
+      "kickoff": "2026-03-04T19:30:00+00:00",
+      "cutoff": "2026-03-04T18:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.764438676184296,
+      "home": "Hamburger SV",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7848212542736823,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77473,
+      "kickoff": "2026-03-06T19:30:00+00:00",
+      "cutoff": "2026-03-06T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.764438676184296,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7910592948838922,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77474,
+      "kickoff": "2026-03-07T14:30:00+00:00",
+      "cutoff": "2026-03-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "SC Freiburg",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7848790363830274,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77475,
+      "kickoff": "2026-03-07T14:30:00+00:00",
+      "cutoff": "2026-03-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "1. FSV Mainz 05",
+      "away": "VfB Stuttgart",
+      "p": 0.7936111261049126,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77476,
+      "kickoff": "2026-03-07T14:30:00+00:00",
+      "cutoff": "2026-03-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "RB Leipzig",
+      "away": "FC Augsburg",
+      "p": 0.7536118684243802,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77477,
+      "kickoff": "2026-03-07T14:30:00+00:00",
+      "cutoff": "2026-03-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "VfL Wolfsburg",
+      "away": "Hamburger SV",
+      "p": 0.7778256641402811,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77480,
+      "kickoff": "2026-03-07T14:30:00+00:00",
+      "cutoff": "2026-03-07T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "1. FC Heidenheim 1846",
+      "away": "TSG Hoffenheim",
+      "p": 0.798620186374151,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77481,
+      "kickoff": "2026-03-07T17:30:00+00:00",
+      "cutoff": "2026-03-07T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "1. FC K\u00f6ln",
+      "away": "Borussia Dortmund",
+      "p": 0.7904784694609677,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77479,
+      "kickoff": "2026-03-08T14:30:00+00:00",
+      "cutoff": "2026-03-08T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7639429312581063,
+      "home": "FC St. Pauli",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7680974510625632,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77478,
+      "kickoff": "2026-03-08T16:30:00+00:00",
+      "cutoff": "2026-03-08T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7639429312581063,
+      "home": "1. FC Union Berlin",
+      "away": "SV Werder Bremen",
+      "p": 0.7197471802617035,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77488,
+      "kickoff": "2026-03-13T19:30:00+00:00",
+      "cutoff": "2026-03-13T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7665369649805448,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "FC St. Pauli",
+      "p": 0.7484362305058749,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77482,
+      "kickoff": "2026-03-14T14:30:00+00:00",
+      "cutoff": "2026-03-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7665369649805448,
+      "home": "Bayer 04 Leverkusen",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.838677079835948,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77483,
+      "kickoff": "2026-03-14T14:30:00+00:00",
+      "cutoff": "2026-03-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7665369649805448,
+      "home": "Eintracht Frankfurt",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7551324865398253,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77484,
+      "kickoff": "2026-03-14T14:30:00+00:00",
+      "cutoff": "2026-03-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7665369649805448,
+      "home": "Borussia Dortmund",
+      "away": "FC Augsburg",
+      "p": 0.7657047526823632,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77489,
+      "kickoff": "2026-03-14T14:30:00+00:00",
+      "cutoff": "2026-03-14T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7665369649805448,
+      "home": "TSG Hoffenheim",
+      "away": "VfL Wolfsburg",
+      "p": 0.7874915142012332,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77490,
+      "kickoff": "2026-03-14T17:30:00+00:00",
+      "cutoff": "2026-03-14T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7665369649805448,
+      "home": "Hamburger SV",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7552718844102035,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77486,
+      "kickoff": "2026-03-15T14:30:00+00:00",
+      "cutoff": "2026-03-15T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "SV Werder Bremen",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7501811740777262,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77485,
+      "kickoff": "2026-03-15T16:30:00+00:00",
+      "cutoff": "2026-03-15T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7670343932511356,
+      "home": "SC Freiburg",
+      "away": "1. FC Union Berlin",
+      "p": 0.7544262094902557,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77487,
+      "kickoff": "2026-03-15T18:30:00+00:00",
+      "cutoff": "2026-03-15T17:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7670343932511356,
+      "home": "VfB Stuttgart",
+      "away": "RB Leipzig",
+      "p": 0.8015387712778919,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77494,
+      "kickoff": "2026-03-20T19:30:00+00:00",
+      "cutoff": "2026-03-20T18:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "RB Leipzig",
+      "away": "TSG Hoffenheim",
+      "p": 0.8071530349927637,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77491,
+      "kickoff": "2026-03-21T14:30:00+00:00",
+      "cutoff": "2026-03-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "1. FC Union Berlin",
+      "p": 0.794681603932713,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77495,
+      "kickoff": "2026-03-21T14:30:00+00:00",
+      "cutoff": "2026-03-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7670343932511356,
+      "home": "VfL Wolfsburg",
+      "away": "SV Werder Bremen",
+      "p": 0.7472052050996879,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77498,
+      "kickoff": "2026-03-21T14:30:00+00:00",
+      "cutoff": "2026-03-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "1. FC Heidenheim 1846",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7907303001900343,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77499,
+      "kickoff": "2026-03-21T14:30:00+00:00",
+      "cutoff": "2026-03-21T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "1. FC K\u00f6ln",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7601275924322698,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77492,
+      "kickoff": "2026-03-21T17:30:00+00:00",
+      "cutoff": "2026-03-21T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "Borussia Dortmund",
+      "away": "Hamburger SV",
+      "p": 0.7774921147142788,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77493,
+      "kickoff": "2026-03-22T14:30:00+00:00",
+      "cutoff": "2026-03-22T13:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "1. FSV Mainz 05",
+      "away": "Eintracht Frankfurt",
+      "p": 0.763106203321176,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77497,
+      "kickoff": "2026-03-22T16:30:00+00:00",
+      "cutoff": "2026-03-22T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "FC St. Pauli",
+      "away": "SC Freiburg",
+      "p": 0.7664648553031292,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77496,
+      "kickoff": "2026-03-22T18:30:00+00:00",
+      "cutoff": "2026-03-22T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7670343932511356,
+      "home": "FC Augsburg",
+      "away": "VfB Stuttgart",
+      "p": 0.7839378829524655,
+      "model_id": "a2565884eed726c58ea026a783e6a10c2642adf9e78648444060b25644cb7740",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77500,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "Bayer 04 Leverkusen",
+      "away": "VfL Wolfsburg",
+      "p": 0.7874677735619424,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77502,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7676833225178455,
+      "home": "SC Freiburg",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7934758566904113,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77503,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "SV Werder Bremen",
+      "away": "RB Leipzig",
+      "p": 0.7661027476806205,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77505,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.737368685422314,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77507,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "TSG Hoffenheim",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7825457407033936,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77508,
+      "kickoff": "2026-04-04T13:30:00+00:00",
+      "cutoff": "2026-04-04T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "Hamburger SV",
+      "away": "FC Augsburg",
+      "p": 0.7289168155677305,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77504,
+      "kickoff": "2026-04-04T16:30:00+00:00",
+      "cutoff": "2026-04-04T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7676833225178455,
+      "home": "VfB Stuttgart",
+      "away": "Borussia Dortmund",
+      "p": 0.795022843938238,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77506,
+      "kickoff": "2026-04-05T13:30:00+00:00",
+      "cutoff": "2026-04-05T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "1. FC Union Berlin",
+      "away": "FC St. Pauli",
+      "p": 0.7229557416543656,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77501,
+      "kickoff": "2026-04-05T15:30:00+00:00",
+      "cutoff": "2026-04-05T14:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7676833225178455,
+      "home": "Eintracht Frankfurt",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7523133002742599,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77514,
+      "kickoff": "2026-04-10T18:30:00+00:00",
+      "cutoff": "2026-04-10T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "FC Augsburg",
+      "away": "TSG Hoffenheim",
+      "p": 0.784790516816354,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77509,
+      "kickoff": "2026-04-11T13:30:00+00:00",
+      "cutoff": "2026-04-11T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "Borussia Dortmund",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7903789037155236,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77511,
+      "kickoff": "2026-04-11T13:30:00+00:00",
+      "cutoff": "2026-04-11T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7676833225178455,
+      "home": "RB Leipzig",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.763476679058214,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77513,
+      "kickoff": "2026-04-11T13:30:00+00:00",
+      "cutoff": "2026-04-11T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "VfL Wolfsburg",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7469647247992781,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77516,
+      "kickoff": "2026-04-11T13:30:00+00:00",
+      "cutoff": "2026-04-11T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "1. FC Heidenheim 1846",
+      "away": "1. FC Union Berlin",
+      "p": 0.7369813726118526,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77515,
+      "kickoff": "2026-04-11T16:30:00+00:00",
+      "cutoff": "2026-04-11T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "FC St. Pauli",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7889277196098701,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77517,
+      "kickoff": "2026-04-12T13:30:00+00:00",
+      "cutoff": "2026-04-12T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "1. FC K\u00f6ln",
+      "away": "SV Werder Bremen",
+      "p": 0.7242560726686723,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77512,
+      "kickoff": "2026-04-12T15:30:00+00:00",
+      "cutoff": "2026-04-12T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7676833225178455,
+      "home": "VfB Stuttgart",
+      "away": "Hamburger SV",
+      "p": 0.7743853158848623,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77510,
+      "kickoff": "2026-04-12T17:30:00+00:00",
+      "cutoff": "2026-04-12T16:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7676833225178455,
+      "home": "1. FSV Mainz 05",
+      "away": "SC Freiburg",
+      "p": 0.7625594209162527,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77525,
+      "kickoff": "2026-04-17T18:30:00+00:00",
+      "cutoff": "2026-04-17T17:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7683322517845554,
+      "home": "FC St. Pauli",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7360339129215315,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77519,
+      "kickoff": "2026-04-18T13:30:00+00:00",
+      "cutoff": "2026-04-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "Bayer 04 Leverkusen",
+      "away": "FC Augsburg",
+      "p": 0.7734353382715687,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77522,
+      "kickoff": "2026-04-18T13:30:00+00:00",
+      "cutoff": "2026-04-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "SV Werder Bremen",
+      "away": "Hamburger SV",
+      "p": 0.7447572430346168,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77524,
+      "kickoff": "2026-04-18T13:30:00+00:00",
+      "cutoff": "2026-04-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "1. FC Union Berlin",
+      "away": "VfL Wolfsburg",
+      "p": 0.7531023363147675,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77526,
+      "kickoff": "2026-04-18T13:30:00+00:00",
+      "cutoff": "2026-04-18T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "TSG Hoffenheim",
+      "away": "Borussia Dortmund",
+      "p": 0.7969921538517817,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77520,
+      "kickoff": "2026-04-18T16:30:00+00:00",
+      "cutoff": "2026-04-18T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "Eintracht Frankfurt",
+      "away": "RB Leipzig",
+      "p": 0.7658444653002199,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77521,
+      "kickoff": "2026-04-19T13:30:00+00:00",
+      "cutoff": "2026-04-19T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "SC Freiburg",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7321899362992161,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77518,
+      "kickoff": "2026-04-19T15:30:00+00:00",
+      "cutoff": "2026-04-19T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "VfB Stuttgart",
+      "p": 0.8139836712277266,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77523,
+      "kickoff": "2026-04-19T17:30:00+00:00",
+      "cutoff": "2026-04-19T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7683322517845554,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7597545089899439,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77529,
+      "kickoff": "2026-04-24T18:30:00+00:00",
+      "cutoff": "2026-04-24T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7696301103179753,
+      "home": "RB Leipzig",
+      "away": "1. FC Union Berlin",
+      "p": 0.7323544153626339,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77528,
+      "kickoff": "2026-04-25T13:30:00+00:00",
+      "cutoff": "2026-04-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7698309492847855,
+      "home": "1. FSV Mainz 05",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7954306286185295,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77531,
+      "kickoff": "2026-04-25T13:30:00+00:00",
+      "cutoff": "2026-04-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7698309492847855,
+      "home": "VfL Wolfsburg",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7624647220256928,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77532,
+      "kickoff": "2026-04-25T13:30:00+00:00",
+      "cutoff": "2026-04-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7698309492847855,
+      "home": "FC Augsburg",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7403240051365231,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77533,
+      "kickoff": "2026-04-25T13:30:00+00:00",
+      "cutoff": "2026-04-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7698309492847855,
+      "home": "1. FC Heidenheim 1846",
+      "away": "FC St. Pauli",
+      "p": 0.7386919206428835,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77534,
+      "kickoff": "2026-04-25T13:30:00+00:00",
+      "cutoff": "2026-04-25T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7698309492847855,
+      "home": "1. FC K\u00f6ln",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7733091018578132,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77535,
+      "kickoff": "2026-04-25T16:30:00+00:00",
+      "cutoff": "2026-04-25T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7698309492847855,
+      "home": "Hamburger SV",
+      "away": "TSG Hoffenheim",
+      "p": 0.7909325146006324,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77530,
+      "kickoff": "2026-04-26T13:30:00+00:00",
+      "cutoff": "2026-04-26T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7692307692307693,
+      "home": "VfB Stuttgart",
+      "away": "SV Werder Bremen",
+      "p": 0.7458784093784872,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77527,
+      "kickoff": "2026-04-26T15:30:00+00:00",
+      "cutoff": "2026-04-26T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7692307692307693,
+      "home": "Borussia Dortmund",
+      "away": "SC Freiburg",
+      "p": 0.7774066847691234,
+      "model_id": "18aa9c824f9dbb7bfdeec48d49611ac260a7d72fcc4c9a9b750ee7be4ab95d00",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77536,
+      "kickoff": "2026-05-02T13:30:00+00:00",
+      "cutoff": "2026-05-02T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7846653246128132,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77538,
+      "kickoff": "2026-05-02T13:30:00+00:00",
+      "cutoff": "2026-05-02T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7706840390879479,
+      "home": "Eintracht Frankfurt",
+      "away": "Hamburger SV",
+      "p": 0.7743000172750996,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77540,
+      "kickoff": "2026-05-02T13:30:00+00:00",
+      "cutoff": "2026-05-02T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "SV Werder Bremen",
+      "away": "FC Augsburg",
+      "p": 0.7559980643516206,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77542,
+      "kickoff": "2026-05-02T13:30:00+00:00",
+      "cutoff": "2026-05-02T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "1. FC Union Berlin",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.758327286442951,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77544,
+      "kickoff": "2026-05-02T13:30:00+00:00",
+      "cutoff": "2026-05-02T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "TSG Hoffenheim",
+      "away": "VfB Stuttgart",
+      "p": 0.8025304186274088,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77537,
+      "kickoff": "2026-05-02T16:30:00+00:00",
+      "cutoff": "2026-05-02T15:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "Bayer 04 Leverkusen",
+      "away": "RB Leipzig",
+      "p": 0.7903875504032393,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77543,
+      "kickoff": "2026-05-03T13:30:00+00:00",
+      "cutoff": "2026-05-03T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7706840390879479,
+      "home": "FC St. Pauli",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7674734781145731,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77541,
+      "kickoff": "2026-05-03T15:30:00+00:00",
+      "cutoff": "2026-05-03T14:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7706840390879479,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "Borussia Dortmund",
+      "p": 0.7785646292399026,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77539,
+      "kickoff": "2026-05-03T17:30:00+00:00",
+      "cutoff": "2026-05-03T16:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7706840390879479,
+      "home": "SC Freiburg",
+      "away": "VfL Wolfsburg",
+      "p": 0.7642294669385757,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77545,
+      "kickoff": "2026-05-08T18:30:00+00:00",
+      "cutoff": "2026-05-08T17:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "Borussia Dortmund",
+      "away": "Eintracht Frankfurt",
+      "p": 0.7674389969894061,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77547,
+      "kickoff": "2026-05-09T13:30:00+00:00",
+      "cutoff": "2026-05-09T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "RB Leipzig",
+      "away": "FC St. Pauli",
+      "p": 0.7581693303684002,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77548,
+      "kickoff": "2026-05-09T13:30:00+00:00",
+      "cutoff": "2026-05-09T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "VfB Stuttgart",
+      "away": "Bayer 04 Leverkusen",
+      "p": 0.7931017865312646,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77550,
+      "kickoff": "2026-05-09T13:30:00+00:00",
+      "cutoff": "2026-05-09T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "FC Augsburg",
+      "away": "Borussia M\u00f6nchengladbach",
+      "p": 0.7642475563192054,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77551,
+      "kickoff": "2026-05-09T13:30:00+00:00",
+      "cutoff": "2026-05-09T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "TSG Hoffenheim",
+      "away": "SV Werder Bremen",
+      "p": 0.764006402784461,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77549,
+      "kickoff": "2026-05-09T16:30:00+00:00",
+      "cutoff": "2026-05-09T15:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7699287103046014,
+      "home": "VfL Wolfsburg",
+      "away": "FC Bayern M\u00fcnchen",
+      "p": 0.7956470033449539,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77553,
+      "kickoff": "2026-05-10T13:30:00+00:00",
+      "cutoff": "2026-05-10T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "Hamburger SV",
+      "away": "SC Freiburg",
+      "p": 0.7674945996521082,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77552,
+      "kickoff": "2026-05-10T15:30:00+00:00",
+      "cutoff": "2026-05-10T14:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "1. FC K\u00f6ln",
+      "away": "1. FC Heidenheim 1846",
+      "p": 0.7685918578071638,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77546,
+      "kickoff": "2026-05-10T17:30:00+00:00",
+      "cutoff": "2026-05-10T16:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7699287103046014,
+      "home": "1. FSV Mainz 05",
+      "away": "1. FC Union Berlin",
+      "p": 0.7459948201153537,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77554,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "FC Bayern M\u00fcnchen",
+      "away": "1. FC K\u00f6ln",
+      "p": 0.7848839243592334,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77555,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7704280155642024,
+      "home": "Bayer 04 Leverkusen",
+      "away": "Hamburger SV",
+      "p": 0.787067262011274,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77556,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "Eintracht Frankfurt",
+      "away": "VfB Stuttgart",
+      "p": 0.7964661902451969,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77557,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "SC Freiburg",
+      "away": "RB Leipzig",
+      "p": 0.7667816205425869,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77558,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 0,
+      "baseline": 0.7704280155642024,
+      "home": "SV Werder Bremen",
+      "away": "Borussia Dortmund",
+      "p": 0.773628956940903,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77559,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "Borussia M\u00f6nchengladbach",
+      "away": "TSG Hoffenheim",
+      "p": 0.7970960958102322,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77560,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "1. FC Union Berlin",
+      "away": "FC Augsburg",
+      "p": 0.7610991210801736,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77561,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "FC St. Pauli",
+      "away": "VfL Wolfsburg",
+      "p": 0.7609085329424553,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    },
+    {
+      "match_id": 77562,
+      "kickoff": "2026-05-16T13:30:00+00:00",
+      "cutoff": "2026-05-16T12:30:00+00:00",
+      "season": 2025,
+      "target": 1,
+      "baseline": 0.7704280155642024,
+      "home": "1. FC Heidenheim 1846",
+      "away": "1. FSV Mainz 05",
+      "p": 0.7818311071981362,
+      "model_id": "043e8e594d3b8db36af054c3fcedf41a978a7f6aff49113b6d33fe6bb7b8ba7a",
+      "state": "retrospective_research"
+    }
+  ],
+  "no_odds_return_analysis": true
+}
