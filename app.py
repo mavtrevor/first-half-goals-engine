@@ -125,6 +125,9 @@ def show_finder(feed, enabled, now):
             st.dataframe([{'Source':f['provider'],'State':f['state'],'Returned fixtures':len(f.get('events',[])),
                 'Complete response':f.get('complete',False),'Reason':f.get('reason',''),
                 'Retrieved':wat(f['observed_at']) if f.get('observed_at') else 'Not checked'} for f in feeds],hide_index=True)
+            for source in feeds:
+                if source.get('quota_diagnostic') is not None and source['state']=='quota_unknown':
+                    st.caption(f'{source["provider"]} quota headers: {json.dumps(source["quota_diagnostic"],sort_keys=True)}')
             candidates=[c for f in feeds for c in f.get('catalog',[]) if c.get('competition_type')=='League'
                 and c['region'] in ('Africa','Asia','Oceania','North/Central America','South America')
                 and c['name'].lower() in {'premier league','premier soccer league','npfl','professional league',

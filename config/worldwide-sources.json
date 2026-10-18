@@ -8,6 +8,12 @@
     "Asia": ["Japan", "South Korea", "South-Korea", "China", "China PR", "Saudi Arabia", "Saudi-Arabia", "India", "Indonesia", "Thailand", "Malaysia", "Vietnam", "Qatar", "United Arab Emirates", "UAE", "Iran"],
     "Oceania": ["Australia", "New Zealand", "New-Zealand", "Fiji"]
   },
-  "reviewed_api_football_competitions": {},
+  "reviewed_api_football_competitions": {"188":"senior_real", "253":"senior_real", "98":"senior_real", "399":"senior_real"},
+  "reviewed_identity_evidence": {
+    "188": {"country":"Australia", "name":"A-League", "reviewed":"2026-10-18", "official_url":"https://aleagues.com.au/more/about-the-a-leagues/"},
+    "253": {"country":"USA", "name":"Major League Soccer", "reviewed":"2026-10-18", "official_url":"https://www.mlssoccer.com/league-reports/competition-guidelines/"},
+    "98": {"country":"Japan", "name":"J1 League", "reviewed":"2026-10-18", "official_url":"https://www.jleague.jp/en/outline/j1/"},
+    "399": {"country":"Nigeria", "name":"NPFL", "reviewed":"2026-10-18", "official_url":"https://npfl.com.ng/npfl-documents/"}
+  },
   "notice": "Country lists are discovery targets, not entitlements. API-Football senior competition classifications require a reviewed provider ID entry before selection; unknown competitions remain diagnostics-only. No free current-season access is assumed."
 }

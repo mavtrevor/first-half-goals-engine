@@ -28,6 +28,15 @@ def region(country):
     return next((name for name,countries in CONFIG['regions'].items() if country in countries),'Other / unreviewed')
 
 
+def classify_api_league(raw):
+    identity=str(raw['league']['id'])
+    evidence=CONFIG.get('reviewed_identity_evidence',{}).get(identity,{})
+    if (evidence.get('country')==raw['country']['name'] and evidence.get('name')==raw['league']['name']
+        and raw['league'].get('type')=='League' and evidence.get('official_url','').startswith('https://')):
+        return CONFIG['reviewed_api_football_competitions'].get(identity,'unknown')
+    return 'unknown'
+
+
 def _scope(provider, token):
     return provider+':'+hashlib.sha256(token.encode()).hexdigest()
 
@@ -65,7 +74,7 @@ def read_json(provider, path, params, token, now, db):
         return _error('access_denied')
     url=HOSTS[provider]+path+('?' + urlencode(sorted(params.items())) if params else '')
     scope=_scope(provider,token)
-    key=hashlib.sha256((scope+url).encode()).hexdigest()
+    key=hashlib.sha256((scope+url+':quota-headers-v2').encode()).hexdigest()
     db.execute('CREATE TABLE IF NOT EXISTS api_cache (key TEXT PRIMARY KEY, expires TEXT, record TEXT)')
     stored=db.execute('SELECT record FROM budgets WHERE provider=?',(scope,)).fetchone()
     allowance=json.loads(stored[0]) if stored else {}
@@ -80,6 +89,8 @@ def read_json(provider, path, params, token, now, db):
             db.execute('INSERT OR REPLACE INTO api_cache VALUES(?,?,?)',
                 (key,(now+timedelta(seconds=seconds)).isoformat(),json.dumps(result,allow_nan=False)))
         return result
+    if allowance and allowance.get('minute_limit')==0 and utc(allowance['reset_at'])>now:
+        return cache(_error('quota_exhausted',url),max(1,int((utc(allowance['reset_at'])-now).total_seconds())))
     if bootstrap:
         permit=reserve_request(db,scope+':handshake',now,dict(remaining=1,reset_at=(now+timedelta(minutes=1)).isoformat(),
                     observed_at=now.isoformat(),minute_limit=1,reserve=0))
@@ -92,6 +103,10 @@ def read_json(provider, path, params, token, now, db):
     try:
         with OPENER.open(request,timeout=15) as response:
             quota=_allowance(provider,response.headers,now)
+            quota_diagnostic={k.lower():int(v) if str(v).isdecimal() else 'non-numeric'
+                for k,v in response.headers.items() if k.lower() in
+                ('x-requests-available','x-requestsavailable','x-requestcounter-reset',
+                 'x-ratelimit-requests-remaining','x-ratelimit-remaining')}
             payload=response.read(MAX_BYTES+1)
         if len(payload)>MAX_BYTES: return cache(_error('invalid_response',url))
         body=json.loads(payload.decode('utf-8-sig'))
@@ -117,7 +132,8 @@ def read_json(provider, path, params, token, now, db):
             if subscription.get('plan')!='Free' or subscription.get('active') is not True:
                 return cache(_error('access_denied',url))
             body={'response':{'subscription':{'plan':'Free','active':True}}}
-        if not quota: return cache(_error('quota_unknown',url))
+        if not quota:
+            return cache((None,dict(_error('quota_unknown',url)[1],quota_diagnostic=quota_diagnostic)))
         meta=dict(state='ready',source_url=url,quota=quota,reason='',observed_at=now.isoformat())
         duration=86400 if path.startswith(('/competitions','/leagues')) and not path.endswith('/matches') else 300
         if provider=='api_football' and path=='/status':
@@ -162,7 +178,7 @@ def catalog(provider, token, now, db):
             else:
                 seasons=[s for s in raw['seasons'] if s.get('current') is True]
                 if len(seasons)!=1: continue
-                classification=CONFIG['reviewed_api_football_competitions'].get(str(raw['league']['id']),'unknown')
+                classification=classify_api_league(raw)
                 item=dict(id=positive_id(raw['league']['id']),name=raw['league']['name'],code='',
                     season_id=positive_id(seasons[0]['year']),season_year=seasons[0]['year'],
                     country=raw['country']['name'],classification=classification,competition_type=raw['league']['type'],

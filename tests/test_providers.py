@@ -27,6 +27,12 @@ class Response(io.BytesIO):
 
 
 class ProviderTests(unittest.TestCase):
+    def test_reviewed_competition_requires_matching_catalog_identity(self):
+        league=dict(league=dict(id=253,name='Major League Soccer',type='League'),country=dict(name='USA'))
+        self.assertEqual(providers.classify_api_league(league),'senior_real')
+        league['league']['name']='MLS NEXT'
+        self.assertEqual(providers.classify_api_league(league),'unknown')
+
     def test_real_football_data_quota_header_spelling(self):
         allowance=providers._allowance('football_data',{'X-Requests-Available':'9','X-RequestCounter-Reset':'60'},NOW)
         self.assertEqual(allowance['remaining'],9)

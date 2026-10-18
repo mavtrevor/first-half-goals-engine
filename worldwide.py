@@ -14,7 +14,8 @@ def collect_feeds(tokens, now, start, end, db):
         key=tokens.get(secret)
         inventory=catalog(provider,key,now,db)
         if inventory['state']!='ready':
-            feeds.append(dict(provider=provider,state=inventory['state'],events=[],complete=False,reason=inventory['state']))
+            feeds.append(dict(provider=provider,state=inventory['state'],events=[],complete=False,reason=inventory['state'],
+                quota_diagnostic=inventory.get('quota_diagnostic',{})))
             continue
         competitions=inventory['competitions']
         reviewed=[c for c in competitions if c['classification']=='senior_real']
