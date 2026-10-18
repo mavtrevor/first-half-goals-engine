@@ -49,7 +49,7 @@ def _allowance(provider, headers, now):
     headers={k.lower():v for k,v in headers.items()}
     try:
         if provider=='football_data':
-            remaining=int(headers.get('x-requests-available',headers.get('x-requestsavailable')))
+            remaining=min(int(headers[k]) for k in ('x-requests-available-minute','x-requests-available','x-requestsavailable') if k in headers)
             reset=now+timedelta(seconds=max(1,int(headers['x-requestcounter-reset'])))
             limit,reserve=10,0
         else:
@@ -74,7 +74,7 @@ def read_json(provider, path, params, token, now, db):
         return _error('access_denied')
     url=HOSTS[provider]+path+('?' + urlencode(sorted(params.items())) if params else '')
     scope=_scope(provider,token)
-    key=hashlib.sha256((scope+url+':quota-headers-v2').encode()).hexdigest()
+    key=hashlib.sha256((scope+url+':quota-headers-v3').encode()).hexdigest()
     db.execute('CREATE TABLE IF NOT EXISTS api_cache (key TEXT PRIMARY KEY, expires TEXT, record TEXT)')
     stored=db.execute('SELECT record FROM budgets WHERE provider=?',(scope,)).fetchone()
     allowance=json.loads(stored[0]) if stored else {}
@@ -96,7 +96,10 @@ def read_json(provider, path, params, token, now, db):
                     observed_at=now.isoformat(),minute_limit=1,reserve=0))
     else:
         permit=reserve_request(db,scope,now,allowance)
-    if not permit: return cache(_error('quota_exhausted' if allowance else 'quota_unknown',url))
+    if not permit:
+        result=_error('quota_exhausted' if allowance else 'quota_unknown',url)
+        result[1]['quota']={k:allowance[k] for k in ('remaining','reset_at','reserve','minute_limit') if k in allowance}
+        return cache(result)
     header='X-Auth-Token' if provider=='football_data' else 'x-apisports-key'
     request=Request(url,headers={header:token,'Accept':'application/json',
         'User-Agent':'FirstHalfGoalsEngine/2.0 (+https://github.com/mavtrevor/first-half-goals-engine)'})
@@ -105,7 +108,7 @@ def read_json(provider, path, params, token, now, db):
             quota=_allowance(provider,response.headers,now)
             quota_diagnostic={k.lower():int(v) if str(v).isdecimal() else 'non-numeric'
                 for k,v in response.headers.items() if k.lower() in
-                ('x-requests-available','x-requestsavailable','x-requestcounter-reset',
+                ('x-requests-available-minute','x-requests-available','x-requestsavailable','x-requestcounter-reset',
                  'x-ratelimit-requests-remaining','x-ratelimit-remaining')}
             payload=response.read(MAX_BYTES+1)
         if len(payload)>MAX_BYTES: return cache(_error('invalid_response',url))

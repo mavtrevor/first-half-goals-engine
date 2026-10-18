@@ -38,6 +38,10 @@ class ProviderTests(unittest.TestCase):
         self.assertEqual(allowance['remaining'],9)
         self.assertEqual(allowance['minute_limit'],10)
 
+    def test_registered_clients_report_a_separate_minute_header(self):
+        quota=providers._allowance('football_data',{'X-Requests-Available-Minute':'8','X-RequestCounter-Reset':'60'},NOW)
+        self.assertEqual(quota['remaining'],8)
+
     def test_http_access_and_quota_errors_never_echo_tokens(self):
         for code,state in [(401,'access_denied'),(403,'access_denied'),(429,'quota_exhausted')]:
             token='PRIVATE_TOKEN_'+str(code)
