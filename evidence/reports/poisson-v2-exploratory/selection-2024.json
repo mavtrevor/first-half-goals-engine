@@ -1,0 +1,19 @@
+{
+  "inner_season": 2023,
+  "outer_season": 2024,
+  "selected_configuration": "0.01:sigmoid",
+  "inner_losses": {
+    "0.01:identity": 0.5087314312983143,
+    "0.01:sigmoid": 0.504460673676194,
+    "0.1:identity": 0.5124259667133566,
+    "0.1:sigmoid": 0.5076483878788939,
+    "1.0:identity": 0.5153195445778134,
+    "1.0:sigmoid": 0.5115311817590582
+  },
+  "rejected_candidates": {},
+  "expected_inner_matches": 286,
+  "last_inner_label_available": "2024-05-19T13:30:00+00:00",
+  "protocol_hash": "0ff479dd3485faf2260c8e887879f2beaeb5c12b4bfce636e1ff325bb5a134d6",
+  "outer_outcomes_used_for_selection": false,
+  "all_archive_results_exploratory": true
+}

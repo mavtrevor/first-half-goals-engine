@@ -1,0 +1,503 @@
+{
+  "selection": {
+    "inner_season": 2023,
+    "outer_season": 2024,
+    "selected_configuration": "0.01:sigmoid",
+    "inner_losses": {
+      "0.01:identity": 0.5087314312983143,
+      "0.01:sigmoid": 0.504460673676194,
+      "0.1:identity": 0.5124259667133566,
+      "0.1:sigmoid": 0.5076483878788939,
+      "1.0:identity": 0.5153195445778134,
+      "1.0:sigmoid": 0.5115311817590582
+    },
+    "rejected_candidates": {},
+    "expected_inner_matches": 286,
+    "last_inner_label_available": "2024-05-19T13:30:00+00:00",
+    "protocol_hash": "0ff479dd3485faf2260c8e887879f2beaeb5c12b4bfce636e1ff325bb5a134d6",
+    "outer_outcomes_used_for_selection": false,
+    "all_archive_results_exploratory": true
+  },
+  "folds": [
+    {
+      "month": "2023-08",
+      "train": 789,
+      "calibration": 593,
+      "expected": 14,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "321d0ed4e9deef6eb5d7bf856ed880e8bff1a1208f92c292a373f993007e6d67",
+          "training_label_available_through": "2021-05-23T13:30:00+00:00",
+          "calibration_label_available_through": "2023-05-28T13:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9610135157150348,
+            "away_mean_squared_pearson_residual": 0.8339382799326689,
+            "residual_correlation": -0.054532408889164295,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "601aa50debb62de39813c2e55c3a86ef8b7975a18dfe97751b39d1d3afcb193b",
+          "training_label_available_through": "2021-05-23T13:30:00+00:00",
+          "calibration_label_available_through": "2023-05-28T13:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0200372406909923,
+            "away_mean_squared_pearson_residual": 0.885549312065049,
+            "residual_correlation": -0.07559676020547482,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "b96eb228c32abb19258a9d9060e2ccb85a041df7f126b1bdf12138fa522b593c",
+          "training_label_available_through": "2021-05-23T13:30:00+00:00",
+          "calibration_label_available_through": "2023-05-28T13:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0979411653493356,
+            "away_mean_squared_pearson_residual": 0.9614072831058883,
+            "residual_correlation": -0.09196211975974851,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2023-09",
+      "train": 810,
+      "calibration": 586,
+      "expected": 27,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "a5fa625e6e4b798dad0ea9f96533af01d5c0ed6111799820895f6dff3b0b37fc",
+          "training_label_available_through": "2021-08-30T15:30:00+00:00",
+          "calibration_label_available_through": "2023-08-28T15:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9553156542119199,
+            "away_mean_squared_pearson_residual": 0.8379893993013815,
+            "residual_correlation": -0.04146562194380153,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "22158f3288404659acabc823fabea2e4314272d6c1d6538fb8927340c85e95e2",
+          "training_label_available_through": "2021-08-30T15:30:00+00:00",
+          "calibration_label_available_through": "2023-08-28T15:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.015168917176242,
+            "away_mean_squared_pearson_residual": 0.890714373456954,
+            "residual_correlation": -0.06391101176185558,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "2db94353114d1ce01f73a90700ec97d3599036c83f1d73d5fee3166f61993e38",
+          "training_label_available_through": "2021-08-30T15:30:00+00:00",
+          "calibration_label_available_through": "2023-08-28T15:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.09120282006736,
+            "away_mean_squared_pearson_residual": 0.9647726762443106,
+            "residual_correlation": -0.08170377899904098,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2023-10",
+      "train": 831,
+      "calibration": 587,
+      "expected": 22,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "9fd75ada522be5c3ece21634825ae99fa657b5a5b01402f7df2498334cf611d7",
+          "training_label_available_through": "2021-09-27T15:30:00+00:00",
+          "calibration_label_available_through": "2023-09-30T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.960529623031108,
+            "away_mean_squared_pearson_residual": 0.8328888379534524,
+            "residual_correlation": -0.03868257875300467,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "6ff3071bb3f5b5df4d30ef3a6a33f440ff4c48620f809e8a1d2e1d7b9c8f7028",
+          "training_label_available_through": "2021-09-27T15:30:00+00:00",
+          "calibration_label_available_through": "2023-09-30T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0219556569096335,
+            "away_mean_squared_pearson_residual": 0.88635392095732,
+            "residual_correlation": -0.0615941126220457,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "5e015b9be03d6e6e969a4ec93dbeda002221f6d1098e6427bc4c258c9c54cac3",
+          "training_label_available_through": "2021-09-27T15:30:00+00:00",
+          "calibration_label_available_through": "2023-09-30T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.097619781131684,
+            "away_mean_squared_pearson_residual": 0.9608856345749806,
+            "residual_correlation": -0.07989351079469695,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2023-11",
+      "train": 859,
+      "calibration": 585,
+      "expected": 25,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "34ea72e4399195a52d321e77e19c8464f18526afbfef2e0beea2f93c9ad6bc3a",
+          "training_label_available_through": "2021-10-31T16:30:00+00:00",
+          "calibration_label_available_through": "2023-10-30T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9512281204411384,
+            "away_mean_squared_pearson_residual": 0.8387287914802273,
+            "residual_correlation": -0.05155829490895229,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "1a8d6134274e4863e919bceca17eb15f89525cb216b567d46805fba69a1c0b91",
+          "training_label_available_through": "2021-10-31T16:30:00+00:00",
+          "calibration_label_available_through": "2023-10-30T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.011988649557543,
+            "away_mean_squared_pearson_residual": 0.8973962258944778,
+            "residual_correlation": -0.07413907017353713,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "b0c66cfe070e81b9b3ce908f1918dde0efb5cbf174bf70f4278cb1f38210f5b3",
+          "training_label_available_through": "2021-10-31T16:30:00+00:00",
+          "calibration_label_available_through": "2023-10-30T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.087084633634115,
+            "away_mean_squared_pearson_residual": 0.9818834723961618,
+            "residual_correlation": -0.09184711765002589,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2023-12",
+      "train": 887,
+      "calibration": 583,
+      "expected": 35,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "179769f4650ca80b1ae04555f1b197f1382735c5f582cacfc65c4694756c5bf0",
+          "training_label_available_through": "2021-11-29T16:30:00+00:00",
+          "calibration_label_available_through": "2023-11-27T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9430131716011393,
+            "away_mean_squared_pearson_residual": 0.8455176635159771,
+            "residual_correlation": -0.05470708245395817,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "f7cd59c6fad9f3605362de6c97cbdbac4a4e1ca8642babe601ec579c7caa9c0d",
+          "training_label_available_through": "2021-11-29T16:30:00+00:00",
+          "calibration_label_available_through": "2023-11-27T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0036819002290085,
+            "away_mean_squared_pearson_residual": 0.9032184646335132,
+            "residual_correlation": -0.07631139146137891,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "6da8a1d3dcf9dd07ca78d67a49c322afc60fde30d9fd95c1dc43d0e02d445b39",
+          "training_label_available_through": "2021-11-29T16:30:00+00:00",
+          "calibration_label_available_through": "2023-11-27T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0736166162665712,
+            "away_mean_squared_pearson_residual": 0.9852391223532511,
+            "residual_correlation": -0.09325508353159002,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2024-01",
+      "train": 923,
+      "calibration": 582,
+      "expected": 27,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "7dc969f4082e189b948c31a13848b3fa0495b0558b50a470b78eaeaa24e2a22f",
+          "training_label_available_through": "2021-12-20T16:30:00+00:00",
+          "calibration_label_available_through": "2023-12-21T19:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9366865531540989,
+            "away_mean_squared_pearson_residual": 0.8824548315117143,
+            "residual_correlation": -0.05861205478473529,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "75a11c02bdd7917ca7f7d92920690116c26f4867632af8058c57f0b4ea61e27e",
+          "training_label_available_through": "2021-12-20T16:30:00+00:00",
+          "calibration_label_available_through": "2023-12-21T19:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.001693703960952,
+            "away_mean_squared_pearson_residual": 0.9381041124814294,
+            "residual_correlation": -0.07755702644634967,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "e1265e2ac6f3591c82a7369b745b2266223c0ff16377ea4f7e8285c08969f184",
+          "training_label_available_through": "2021-12-20T16:30:00+00:00",
+          "calibration_label_available_through": "2023-12-21T19:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0697100799647485,
+            "away_mean_squared_pearson_residual": 1.0155967006594813,
+            "residual_correlation": -0.09261727051729587,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2024-02",
+      "train": 950,
+      "calibration": 582,
+      "expected": 37,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "b3e9eccdac69ee7f2c7b0ac71ab2dd1cfef386e737075fd922921d8d54ce4cd6",
+          "training_label_available_through": "2022-01-24T16:30:00+00:00",
+          "calibration_label_available_through": "2024-01-29T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9280153013029332,
+            "away_mean_squared_pearson_residual": 0.8818296533754607,
+            "residual_correlation": -0.059529704376270816,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "7dede52f41ac72d868099e03a67aabca827e4082e453b58433c710a6ad16cce6",
+          "training_label_available_through": "2022-01-24T16:30:00+00:00",
+          "calibration_label_available_through": "2024-01-29T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9927257141858618,
+            "away_mean_squared_pearson_residual": 0.9332808087661063,
+            "residual_correlation": -0.07932258869517078,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "05c3f9b5844e63eb4da39a0b2e3ae27939302741d94435f668425437166e1842",
+          "training_label_available_through": "2022-01-24T16:30:00+00:00",
+          "calibration_label_available_through": "2024-01-29T16:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.060969384120114,
+            "away_mean_squared_pearson_residual": 1.0102744022782926,
+            "residual_correlation": -0.09509914388211303,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2024-03",
+      "train": 986,
+      "calibration": 583,
+      "expected": 36,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "fdbec0bfe2b91e26b0f80939d31478ecd84c50cb2294c19f4feafa3a0e9f3bc2",
+          "training_label_available_through": "2022-02-28T16:30:00+00:00",
+          "calibration_label_available_through": "2024-02-26T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9311056718328112,
+            "away_mean_squared_pearson_residual": 0.8839634717094167,
+            "residual_correlation": -0.058981270066553765,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "73f3ee329f6a4e98cacbf280a77d6358c29c7e79fe9969f44176861caeecb9c5",
+          "training_label_available_through": "2022-02-28T16:30:00+00:00",
+          "calibration_label_available_through": "2024-02-26T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9905940341170654,
+            "away_mean_squared_pearson_residual": 0.9367508485443061,
+            "residual_correlation": -0.07616227243049493,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "30b29f88756468a4922be27eb38322bc34767410e9ce5ea0e5c054af6b170314",
+          "training_label_available_through": "2022-02-28T16:30:00+00:00",
+          "calibration_label_available_through": "2024-02-26T18:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0551065327106646,
+            "away_mean_squared_pearson_residual": 1.0118991812130274,
+            "residual_correlation": -0.09011450317785466,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2024-04",
+      "train": 1012,
+      "calibration": 590,
+      "expected": 36,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "afd73d500860aa6684a59e83438b0255cdb7a8c8ddefca75eadce6b445ca613d",
+          "training_label_available_through": "2022-03-21T18:30:00+00:00",
+          "calibration_label_available_through": "2024-03-31T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9249585663492276,
+            "away_mean_squared_pearson_residual": 0.8937645424801797,
+            "residual_correlation": -0.0526361514437074,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "8dc0ebc3a86cf79cc1fc46c9e6935280076975a86c53e3b87378476958a85544",
+          "training_label_available_through": "2022-03-21T18:30:00+00:00",
+          "calibration_label_available_through": "2024-03-31T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9833210116248007,
+            "away_mean_squared_pearson_residual": 0.9488229793392582,
+            "residual_correlation": -0.07132391543744611,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "cd62be725a4f0239af088d3ac07bb9ff7cf09b8abe45062f882a8fc8dd750422",
+          "training_label_available_through": "2022-03-21T18:30:00+00:00",
+          "calibration_label_available_through": "2024-03-31T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0473867086595072,
+            "away_mean_squared_pearson_residual": 1.0247365014842567,
+            "residual_correlation": -0.08575948958930335,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    },
+    {
+      "month": "2024-05",
+      "train": 1050,
+      "calibration": 585,
+      "expected": 27,
+      "models": [
+        {
+          "alpha": 0.01,
+          "model_id": "6d09756bc8dfe0d182a32d146a87a8ef2b9a7905d64f19aba789a12d4bd203de",
+          "training_label_available_through": "2022-04-30T18:30:00+00:00",
+          "calibration_label_available_through": "2024-04-29T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 0.9656966423957767,
+            "away_mean_squared_pearson_residual": 0.8945561887660843,
+            "residual_correlation": -0.06400256868256682,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 0.1,
+          "model_id": "786e58a044ac30378d01e29ce66488ddc9718905807717cda1aa4a9f6dd52159",
+          "training_label_available_through": "2022-04-30T18:30:00+00:00",
+          "calibration_label_available_through": "2024-04-29T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.024030491327746,
+            "away_mean_squared_pearson_residual": 0.9510063217830811,
+            "residual_correlation": -0.08356210614256425,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        },
+        {
+          "alpha": 1.0,
+          "model_id": "463b336a11deef87f4f70a107d5d52f9b08cf6375ae18a9712731aead3e88e3d",
+          "training_label_available_through": "2022-04-30T18:30:00+00:00",
+          "calibration_label_available_through": "2024-04-29T17:30:00+00:00",
+          "calibration_fallback": null,
+          "count_diagnostics": {
+            "home_mean_squared_pearson_residual": 1.0882785561707196,
+            "away_mean_squared_pearson_residual": 1.0258976718110002,
+            "residual_correlation": -0.09808799910790154,
+            "interpretation": "training_descriptive_only_not_assumption_validation"
+          }
+        }
+      ],
+      "failures": []
+    }
+  ]
+}

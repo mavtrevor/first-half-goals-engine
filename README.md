@@ -1,8 +1,10 @@
 # First-Half Goals Lab
 
-A local, offline Bundesliga research workbench. It includes saved fixtures, a score-quality audit, reviewed corrections, chronological model evaluation and human-entered SportyBet Nigeria records.
+A Bundesliga fixture finder and research workbench. The Streamlit app retrieves current fixtures from OpenLigaDB's free documented API, displays Nigeria kickoff times and descriptive first-half goal counts, and includes the saved score audit and model evaluations.
 
-**The model has not earned release.** Its frozen 2025–26 test was slightly worse than the earlier league goal-frequency baseline. Current-match probabilities, live retrieval and operator readiness remain locked. Nothing in this app creates a booking code, accesses a betting account or places a wager.
+**The model has not earned release.** Its frozen 2025–26 test was slightly worse than the earlier league goal-frequency baseline. Validated probabilities and SportyBet readiness remain locked. Nothing in this app creates a booking code, accesses a betting account or places a wager.
+
+On Streamlit Cloud, use **Load current fixtures → When (Nigeria time)**. No API key, database import or secret is needed. The source is cached for five minutes. Coverage is Bundesliga only. See [live fixture repair and decisions](docs/live-fixture-fix.md). Personal record forms are disabled by default; enable `FH_ENGINE_ENABLE_MANUAL_RECORDS=1` only on a private local installation.
 
 ## Open the app
 
@@ -21,7 +23,7 @@ Copy-Item -LiteralPath evidence -Destination data -Recurse
 .\.venv\Scripts\python.exe research.py import
 ```
 
-Copy only when `data/` does not exist. The tracked `evidence/` folder contains public source snapshots and fixed experiments. `data/` stays excluded from Git because it also stores personal observations. The app opens empty until import completes. No network retrieval is involved.
+Copy only when `data/` does not exist. This import is optional for historical database exploration; current fixtures and bundled backtest reports work without it. The tracked `evidence/` folder contains public source snapshots and fixed experiments. `data/` stays excluded from Git because it also stores personal observations. The historical import itself uses no network.
 
 If Windows blocks local script execution, do not weaken your execution policy. Run these commands instead:
 
@@ -47,7 +49,9 @@ The reference archive lacks explicit HT fields for 126 matches, including 125 re
 
 `docs/model-card.md` explains the result and limits. `docs/feasibility-acceptance.md` lists remaining operational gates. The optional 48-hour-lag run, if present, is a sensitivity check and does not replace the main test or choose a new production model.
 
-The UI shows saved snapshot times in WAT. Fixture times are unconfirmed and may have changed. A saved human quote expires after five minutes at most, or sooner when identity/kickoff/status changes. Human code reload matching is a historical record, not proof of current prices or an accepted wager.
+The separate [Poisson challenger](docs/challenger-v2-results.md) uses nested chronological development folds and has modest descriptive improvements on the already inspected archive. Its baseline uncertainty still spans zero. See Backtest → Poisson challenger — exploratory; this does not unlock current-match probabilities. Its frozen report and pre-fit code/effective-input archive are under `evidence/reports/poisson-v2-exploratory/` (copied to `data/reports/` during fresh-clone setup).
+
+The UI shows live retrieval and saved snapshot times in WAT. Community fixture times may change and are not SportyBet confirmations. A saved human quote expires after five minutes at most, or sooner when identity/kickoff/status changes. Human code reload matching is a historical record, not proof of current prices or an accepted wager.
 
 ## Commands
 
@@ -62,6 +66,9 @@ The UI shows saved snapshot times in WAT. Fixture times are unconfirmed and may 
 # Run the sealed experiments only if their report directories do not exist.
 .\.venv\Scripts\python.exe research.py backtest
 .\.venv\Scripts\python.exe research.py backtest --run lag48-sensitivity
+
+# Run the separately declared exploratory challenger only if its run directory does not exist.
+.\.venv\Scripts\python.exe challenger.py
 ```
 
 Existing experiment reports are protected against overwrite. To rerun research, preserve the original run and explicitly create a newly named protocol/version in the code; do not delete or retune a failed holdout. Importing the same bytes is idempotent. Changed upstream data needs a new snapshot and renewed correction review.
@@ -76,6 +83,6 @@ The original v1 manifest/source archive was assembled after execution and omits 
 
 Contains information from [OpenLigaDB](https://www.openligadb.de/), made available under the [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/). The raw/effective database and supplied alteration ledger retain that data license; local code does not grant different rights over the source data. Reference comparison data comes from [openfootball](https://github.com/openfootball/football.json), which declares CC0. No crests, videos, private account details or scraped odds are included. Review license obligations before public redistribution; this delivery is for personal local use.
 
-Effective API access conditions and current Nigeria rules/workflow are not fully verified. No network retrieval adapter is enabled. Do not treat a public endpoint or third-party wrapper as permission. There is no switch that turns this research build into an automated betting system.
+A narrow read-only fixture adapter is enabled based on the source's explicit automatic-retrieval offering and official endpoint documentation, reviewed 2026-10-18. The unreadable general terms page is not claimed as reviewed. Current Nigeria rules/workflow remain unverified. There is no switch that turns this research build into an automated betting system.
 
 Keep the `data/` folder private; it stores any notes and code references you enter. Do not enter passwords, phone numbers, OTPs or payment details. No LLM produces probabilities. No profitable-edge claim, stake optimizer or accumulator win-probability estimate is provided. Adult personal research only.

@@ -26,3 +26,5 @@ The release rule remains failed: insufficient final-period sample/class counts f
 Do not fix the result by tuning again on the same holdout. Any proposed challenger needs a new declared experiment and independent confirmation. A 48-hour availability-lag sensitivity is separate evidence and cannot rescue or replace a failed primary test.
 
 The frozen v1 source and hashes are saved beside the report. Later source fixes are recorded separately and do not change these historical results silently.
+
+The subsequent Poisson challenger is documented in challenger-v2-results.md. Its results on this inspected archive remain exploratory; they do not replace v1's original test or establish operational readiness.

@@ -1,0 +1,126 @@
+{
+  "python": "3.14.0",
+  "numpy": "2.3.5",
+  "protocol": {
+    "name": "poisson-v2-exploratory",
+    "target": "1H_match_total_goals_over_0.5",
+    "status": "retrospective_exploratory_only",
+    "outer_seasons": [
+      2024,
+      2025
+    ],
+    "inner_season_offset": -1,
+    "alpha_grid": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "calibration_candidates": [
+      "identity",
+      "sigmoid"
+    ],
+    "training_years": 5,
+    "minimum_training_rows": 500,
+    "minimum_training_span_days": 730,
+    "calibration_years": 2,
+    "minimum_calibration_rows": 500,
+    "minimum_calibration_each_class": 100,
+    "forecast_lead_minutes": 60,
+    "lag_hours": 24,
+    "eligibility": "reuse_v1_last20_min10_per_team",
+    "decay": "none",
+    "unseen_team_effect": "zero_log_effect_league_intercept",
+    "selection": "lowest_inner_log_loss_on_complete_shared_cohort_then_larger_alpha_then_identity",
+    "bootstrap_seed": 42,
+    "bootstrap_repetitions": 1000,
+    "future_confirmatory_start": null,
+    "operational_release": false
+  },
+  "code_sha256": {
+    "app.py": "acae4022a3cddc256a4f05a8022ee038896418ea933f1ebf1b4b1fff3dfa81ff",
+    "backtest.py": "2b634fd0bffd689e533534b911eb5637976835b039c916bfb5b3ac94b235e8cd",
+    "challenger.py": "f8a18f47593e64ec717f96a5d6248b59b758029e98ff657216e6ac52bd9b1284",
+    "config/challenger-v2.json": "2723d06075067c0cfc8e4ab7754d18040c71a6abd85930a64a93f3e9b319d64e",
+    "config/evaluation-protocol.json": "7c00a95f59bcee86cbc122215581ca4f7d1ace6cf1fb8c2dfcaf0f173b0691e4",
+    "config/source-policy.json": "31faf50331bdca0168441309c304fa227440e37635b95c20901e824a7542ee01",
+    "data.py": "47ccc0889f0975d446cad848edc6345d49576d06d19b0be8ed6802504885f7ad",
+    "evaluation.py": "40a7bd93d6bca80ac37131c45b83a280df5fc669b4fa8c06e1470321510d1777",
+    "features.py": "538849588f7dfd0f9ece7d1535a10786d09255f61ea5548729fde0b9ee201280",
+    "forecast.py": "201080af3a095fc3b3ebf4769f1d5bdd3ab7e371518e643a035864b84b3cfa81",
+    "model.py": "a3c1397ba3b0f369e85c906dfc0c9bf936bb85ffa99cbba95c434410dac6a58a",
+    "observations.py": "310f27a680e105224ef65b9ba5f013d315acb19d8da35864ec86d61dffd8f63f",
+    "poisson_model.py": "f20b1d0e0f8b3f346b171ccc5337313733008480eaa7ffea5677f9fdbd29299e",
+    "requirements.txt": "4fdf260f79d969ab35d70ec35d824525e40f1ca1c5fc711f68d7726013e3f7f9",
+    "research.py": "479dc13830463120b8398f2650149dab0c3198535b47c5055f93662cfaafdcb0",
+    "schema.sql": "c03f59879d729caa876c51bdde6dc78a19ddd9c87fe4af74a7f61b4c1bfbc98b"
+  },
+  "effective_inputs_sha256": "a00b8e347ec546849b5e6fc927b2ef56c3fde32c00916043080b327b472ea37e",
+  "snapshots": [
+    {
+      "source": "OpenLigaDB",
+      "season": 2018,
+      "digest": "ad707063bebe18321af6c0489af1ceafcb1871a777a85473a9bbae8bd221ac25",
+      "observed_at": "2026-10-17T08:20:01.385120+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2018, \"observed_at\": \"2026-10-17T08:20:01.3851205Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2018\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2019,
+      "digest": "f8ba8882fa719ef9fdb04952e9f335d4593f390e2e97ba4ac58c4bc401a5acf2",
+      "observed_at": "2026-10-17T08:20:02.882498+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2019, \"observed_at\": \"2026-10-17T08:20:02.8824988Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2019\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2020,
+      "digest": "b821c1954c840a293e65d32b0a292c9d965315099b8c9024f8718bb02146e27c",
+      "observed_at": "2026-10-17T08:20:03.888021+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2020, \"observed_at\": \"2026-10-17T08:20:03.8880213Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2020\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2021,
+      "digest": "bd98da012063c36532e532388727a4605c04f25a1ee0d47fdfcfdd6abaef1721",
+      "observed_at": "2026-10-17T08:20:05.089211+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2021, \"observed_at\": \"2026-10-17T08:20:05.0892112Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2021\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2022,
+      "digest": "f5e604594f014c898a45e16d05c64ba6c4c5a4856174b167775f306d2d63cca8",
+      "observed_at": "2026-10-17T08:19:43.642193+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2022, \"observed_at\": \"2026-10-17T08:19:43.6421931Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2022\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2023,
+      "digest": "4a868515fcf8ce37ae605dc9dbd6023c8008efb4fd142bdca4ece393dd17c00e",
+      "observed_at": "2026-10-17T08:19:44.890918+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2023, \"observed_at\": \"2026-10-17T08:19:44.8909186Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2023\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2024,
+      "digest": "08a9c7198382f6e9c4c983976f53bc401639ac30a95c06798a2418bd26e2b6cf",
+      "observed_at": "2026-10-17T08:19:45.781866+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2024, \"observed_at\": \"2026-10-17T08:19:45.7818661Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2024\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2025,
+      "digest": "cecace9d272eddf0ece700129e4296189d0699447a8e78467588a9c5e749bb6c",
+      "observed_at": "2026-10-17T08:19:47.910072+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2025, \"observed_at\": \"2026-10-17T08:19:47.9100725Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2025\", \"license\": \"ODbL-1.0\"}"
+    },
+    {
+      "source": "OpenLigaDB",
+      "season": 2026,
+      "digest": "520fb67794fd015deedd6556e79489dbe0d6dff6604b655ab93f9bdfb944da94",
+      "observed_at": "2026-10-17T08:19:49.263577+00:00",
+      "metadata": "{\"source\": \"OpenLigaDB\", \"season\": 2026, \"observed_at\": \"2026-10-17T08:19:49.2635778Z\", \"source_url\": \"https://api.openligadb.de/getmatchdata/bl1/2026\", \"license\": \"ODbL-1.0\"}"
+    }
+  ],
+  "sklearn": "1.9.0",
+  "report_sha256": "4952f38dfb2d8fe83cb5a818198d8e9e02884e1f1ee567baece8c68186cee62d",
+  "comparator_sha256": "fe7c4f30e071fa54c8483c5e40878b0fb4618c424c15a88989dff27c74a7e2af"
+}
