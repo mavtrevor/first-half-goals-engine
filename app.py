@@ -125,6 +125,15 @@ def show_finder(feed, enabled, now):
             st.dataframe([{'Source':f['provider'],'State':f['state'],'Returned fixtures':len(f.get('events',[])),
                 'Complete response':f.get('complete',False),'Reason':f.get('reason',''),
                 'Retrieved':wat(f['observed_at']) if f.get('observed_at') else 'Not checked'} for f in feeds],hide_index=True)
+            candidates=[c for f in feeds for c in f.get('catalog',[]) if c.get('competition_type')=='League'
+                and c['region'] in ('Africa','Asia','Oceania','North/Central America','South America')
+                and c['name'].lower() in {'premier league','premier soccer league','npfl','professional league',
+                    'botola pro','ligue professionnelle 1','j1 league','k league 1','pro league','major league soccer',
+                    'liga mx','a-league','liga profesional argentina','primera a','primera división','primera division','serie a'}]
+            if candidates:
+                st.caption('Current league catalog awaiting identity/access review. Catalog presence does not establish free fixture access.')
+                st.dataframe([{'Country':c['country'],'League':c['name'],'Provider competition ID':c['id'],
+                    'Season':c['season_id']} for c in candidates],hide_index=True)
             st.write('Expansion targets include Europe, Africa, Asia, the Americas and Oceania. A country is live only when its free provider account returns a current, reviewed competition. Free-season restrictions and quotas can limit coverage.')
             st.markdown('Create free accounts at [football-data.org](https://www.football-data.org/client/register) and optionally [API-Football](https://dashboard.api-football.com/register). In your Streamlit app settings → Secrets, add the issued keys. Do not paste keys into this chat or commit them to GitHub.')
             st.code('FOOTBALL_DATA_TOKEN = "your football-data.org free token"\nAPI_FOOTBALL_KEY = "your API-Football direct free key"',language='toml')

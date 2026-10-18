@@ -20,7 +20,7 @@ def collect_feeds(tokens, now, start, end, db):
         reviewed=[c for c in competitions if c['classification']=='senior_real']
         if not reviewed:
             feeds.append(dict(provider=provider,state='classification_pending',events=[],complete=False,
-                reason='Competition identities need review',catalog_count=len(competitions)))
+                reason='Competition identities need review',catalog_count=len(competitions),catalog=competitions))
             continue
         selected=fixtures(provider,key,start,end,reviewed,now,db)
         for feed in selected:

@@ -27,6 +27,11 @@ class Response(io.BytesIO):
 
 
 class ProviderTests(unittest.TestCase):
+    def test_real_football_data_quota_header_spelling(self):
+        allowance=providers._allowance('football_data',{'X-Requests-Available':'9','X-RequestCounter-Reset':'60'},NOW)
+        self.assertEqual(allowance['remaining'],9)
+        self.assertEqual(allowance['minute_limit'],10)
+
     def test_http_access_and_quota_errors_never_echo_tokens(self):
         for code,state in [(401,'access_denied'),(403,'access_denied'),(429,'quota_exhausted')]:
             token='PRIVATE_TOKEN_'+str(code)

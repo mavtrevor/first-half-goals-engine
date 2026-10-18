@@ -40,7 +40,7 @@ def _allowance(provider, headers, now):
     headers={k.lower():v for k,v in headers.items()}
     try:
         if provider=='football_data':
-            remaining=int(headers['x-requestsavailable'])
+            remaining=int(headers.get('x-requests-available',headers.get('x-requestsavailable')))
             reset=now+timedelta(seconds=max(1,int(headers['x-requestcounter-reset'])))
             limit,reserve=10,0
         else:
@@ -165,7 +165,8 @@ def catalog(provider, token, now, db):
                 classification=CONFIG['reviewed_api_football_competitions'].get(str(raw['league']['id']),'unknown')
                 item=dict(id=positive_id(raw['league']['id']),name=raw['league']['name'],code='',
                     season_id=positive_id(seasons[0]['year']),season_year=seasons[0]['year'],
-                    country=raw['country']['name'],classification=classification)
+                    country=raw['country']['name'],classification=classification,competition_type=raw['league']['type'],
+                    season_start=seasons[0].get('start'),season_end=seasons[0].get('end'))
             item.update(provider=provider,region=region(item['country']))
             competitions.append(item)
         if provider=='api_football' and body.get('paging',{}).get('total',1)!=1:
