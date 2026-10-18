@@ -239,7 +239,8 @@ def fixtures(provider, token, start, end, competitions, now, db):
     if not token:return [dict(_error('missing_key')[1],provider=provider,events=[],rejections=[],complete=False)]
     if end<start or (end-start).days>8:raise ValueError('Requested range exceeds supported eight-day window')
     lookup={c['id']:c for c in competitions}
-    queries=[('/matches',dict(dateFrom=start.isoformat(),dateTo=end.isoformat(),competitions=','.join(map(str,lookup))))] if provider=='football_data' else [
+    # football-data's dateTo is exclusive; this interface's end date is inclusive.
+    queries=[('/matches',dict(dateFrom=start.isoformat(),dateTo=(end+timedelta(days=1)).isoformat(),competitions=','.join(map(str,lookup))))] if provider=='football_data' else [
         ('/fixtures',dict(date=(start+timedelta(days=i)).isoformat(),timezone='UTC')) for i in range((end-start).days+1)]
     feeds=[]
     for path,params in queries:

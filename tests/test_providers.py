@@ -3,6 +3,7 @@ import io
 import json
 import tempfile
 import unittest
+from datetime import timedelta
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
@@ -27,6 +28,11 @@ class Response(io.BytesIO):
 
 
 class ProviderTests(unittest.TestCase):
+    def test_football_data_exclusive_date_to_includes_requested_final_day(self):
+        with patch('providers.read_json',return_value=(dict(matches=[]),dict(state='ready',source_url='https://api.football-data.org/v4/matches'))) as read:
+            providers.fixtures('football_data','secret',NOW.date(),NOW.date(),[META],NOW,self.db)
+        self.assertEqual(read.call_args.args[2]['dateTo'],(NOW+timedelta(days=1)).date().isoformat())
+
     def test_reviewed_competition_requires_matching_catalog_identity(self):
         league=dict(league=dict(id=253,name='Major League Soccer',type='League'),country=dict(name='USA'))
         self.assertEqual(providers.classify_api_league(league),'senior_real')
