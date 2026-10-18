@@ -33,9 +33,12 @@ def fetch_season(season, now=None):
     digest = hashlib.sha256(payload).hexdigest()
     matches = []
     for row in rows:
-        if row.get('leagueSeason') != season:
+        if not isinstance(row, dict) or row.get('leagueSeason') != season:
             raise ValueError('Fixture season mismatch')
-        match = normalize_match(row, now)
+        try:
+            match = normalize_match(row, now)
+        except (AttributeError, KeyError, TypeError) as exc:
+            raise ValueError('Malformed fixture structure') from exc
         match['snapshot_hash'] = digest
         matches.append(match)
     if len({r['match_id'] for r in matches}) != len(matches):

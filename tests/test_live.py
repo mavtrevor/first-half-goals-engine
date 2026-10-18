@@ -34,7 +34,7 @@ class LiveTests(unittest.TestCase):
 
     def test_invalid_response_never_becomes_live_fixture(self):
         row = self.fixture()
-        cases = [[], {}, [row, row], [dict(row, leagueSeason=2025)],
+        cases = [[], {}, [None], [dict(row, team1=None)], [row, row], [dict(row, leagueSeason=2025)],
                  [dict(row, matchDateTimeUTC='2026-10-17T12:00:00')]]
         for payload in cases:
             with self.subTest(payload=payload), patch('live.urlopen', return_value=Response(json.dumps(payload).encode())):
