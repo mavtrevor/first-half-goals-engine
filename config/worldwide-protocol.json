@@ -1,0 +1,20 @@
+{
+  "name": "worldwide-poisson-v1-shadow",
+  "target": "1H_match_total_goals_over_0.5",
+  "history_years": 5,
+  "calibration_years": 2,
+  "minimum_training_rows": 500,
+  "minimum_training_span_days": 730,
+  "minimum_calibration_rows": 500,
+  "minimum_calibration_each_class": 100,
+  "minimum_team_history": 10,
+  "alpha_grid": [0.01, 0.1, 1.0],
+  "calibration_candidates": ["identity", "sigmoid"],
+  "forecast_lead_minutes": 60,
+  "lag_hours": 24,
+  "bootstrap_seed": 42,
+  "bootstrap_repetitions": 1000,
+  "selection": "latest_two_verified_complete_seasons_inner_then_outer; complete_inner_cohort_minimum_log_loss_then_larger_alpha_then_identity",
+  "operational_release": false,
+  "prospective_confirmatory_protocol": null
+}

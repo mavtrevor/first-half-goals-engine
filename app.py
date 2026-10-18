@@ -11,6 +11,8 @@ import streamlit as st
 from data import ROOT, connect, latest_matches, utc
 from live import fetch_season, recent_halves, season_for, upcoming_matches
 from observations import MARKET, observation_state, record_booking, record_observation
+from worldwide import bundesliga_feed, collect_feeds, rank_estimates, select_fixtures
+from worldwide_store import connect_worldwide
 
 WAT = timezone(timedelta(hours=1), 'WAT')
 DATA_DIR = Path(os.environ.get('FH_ENGINE_DATA_DIR', ROOT/'data'))
@@ -51,12 +53,93 @@ def research_report(relative):
     return read_json(DATA_DIR/relative) or read_json(ROOT/'evidence'/relative)
 
 
+def provider_tokens():
+    tokens={}
+    for name in ('FOOTBALL_DATA_TOKEN','API_FOOTBALL_KEY'):
+        value=os.environ.get(name)
+        if not value:
+            try:
+                value=st.secrets.get(name)
+            except (FileNotFoundError,KeyError):
+                value=None
+        if value: tokens[name]=value
+    return tokens
+
+
+def show_finder(feed, enabled, now):
+    st.subheader('Find games worldwide')
+    horizon=st.selectbox('When (Nigeria time)',['Today','Tomorrow','Next 7 days'])
+    view=st.selectbox('Show',['All fixtures','Eligible estimates'])
+    limit_label=st.selectbox('Selection limit',['Top 20','Top 50','All eligible'])
+    limit={'Top 20':20,'Top 50':50,'All eligible':None}[limit_label]
+    st.button('Check fixtures again',help='Respects shared source caching and request allowances.')
+    feeds=[bundesliga_feed(feed)] if feed else []
+    tokens=provider_tokens()
+    world_db=connect_worldwide(DATA_DIR/'worldwide.sqlite')
+    try:
+        day=now.astimezone(WAT).replace(hour=0,minute=0,second=0,microsecond=0)
+        if horizon=='Tomorrow':day+=timedelta(days=1)
+        end=day+timedelta(days=7 if horizon=='Next 7 days' else 1)
+        if enabled:
+            feeds+=collect_feeds(tokens,now,day.astimezone(timezone.utc).date(),end.astimezone(timezone.utc).date(),world_db)
+        # Selection time follows retrieval; newly fetched timestamps must not appear future-dated.
+        now=datetime.now(timezone.utc)
+        eligible=select_fixtures(feeds,now,horizon,[],[])
+        regions=st.multiselect('Regions',sorted({r['region'] for r in eligible}))
+        countries=st.multiselect('Countries',sorted({r['country'] for r in eligible if not regions or r['region'] in regions}))
+        league_names={r['competition_id']:r['country']+' · '+r['competition'] for r in eligible}
+        leagues=st.multiselect('Leagues',sorted(league_names),format_func=lambda cid:league_names[cid])
+        selected=select_fixtures(feeds,now,horizon,regions,leagues)
+        if countries:selected=[r for r in selected if r['country'] in countries]
+        estimates=rank_estimates(selected,limit)
+        st.metric('Matching fixtures',len(selected))
+        st.caption(f'{len(selected)} current fixtures match your filters; {len(estimates)} eligible estimates under the selected daily limit.')
+        st.caption('Only actually available countries appear in filters. Top 20/50 applies to released estimates per Nigeria calendar day; All fixtures keeps every matching game visible.')
+        shown=estimates if view=='Eligible estimates' else selected
+        if shown:
+            rows=[{'Match ID':r['event_id'],'Home':r['home'],'Away':r['away'],
+                'Country':r['country'],'League':r['competition'],'Kickoff (Nigeria)':wat(r['kickoff']),
+                'Probability':f'{r["probability"]:.0%}' if r.get('probability_state')=='released' else 'Not validated',
+                'Evidence status':r['probability_reason'],'Source':r['provider'],'Retrieved':wat(r['observed_at']),
+                'SportyBet market':'Check manually'} for r in shown]
+            st.dataframe(rows,hide_index=True,width='stretch')
+            st.download_button('Export fixture list',csv_bytes(rows),'current-fixtures.csv','text/csv')
+        elif not eligible:
+            st.info('No fixtures available in this window from the active feeds. Try Next 7 days or configure additional sources below.')
+        else:
+            st.info('No eligible probability estimates yet. Choose All fixtures to see current games; league models still need validation.')
+        with st.expander('First-half evidence and model details'):
+            st.write('Recent goal frequencies are descriptive, not calibrated probabilities. Worldwide league models begin in shadow research; the Bundesliga candidate is also unvalidated.')
+            if feed:
+                lookup={f'openligadb:{r["match_id"]}':r for r in feed['matches']}
+                counts=[]
+                for row in selected:
+                    original=lookup.get(row['event_id'])
+                    if original:
+                        counts.append({'Fixture':row['home']+' vs '+row['away'],
+                            'Home FH goals / games':recent_halves(feed['matches'],original['home_id'],now),
+                            'Away FH goals / games':recent_halves(feed['matches'],original['away_id'],now),
+                            'Model':'Unreleased','Sample scope':'Latest 10 completed games in current season with HT data'})
+                if counts:st.dataframe(counts,hide_index=True)
+        with st.expander('Worldwide sources and setup',expanded=not tokens):
+            st.dataframe([{'Source':f['provider'],'State':f['state'],'Returned fixtures':len(f.get('events',[])),
+                'Complete response':f.get('complete',False),'Reason':f.get('reason',''),
+                'Retrieved':wat(f['observed_at']) if f.get('observed_at') else 'Not checked'} for f in feeds],hide_index=True)
+            st.write('Expansion targets include Europe, Africa, Asia, the Americas and Oceania. A country is live only when its free provider account returns a current, reviewed competition. Free-season restrictions and quotas can limit coverage.')
+            st.markdown('Create free accounts at [football-data.org](https://www.football-data.org/client/register) and optionally [API-Football](https://dashboard.api-football.com/register). In your Streamlit app settings → Secrets, add the issued keys. Do not paste keys into this chat or commit them to GitHub.')
+            st.code('FOOTBALL_DATA_TOKEN = "your football-data.org free token"\nAPI_FOOTBALL_KEY = "your API-Football direct free key"',language='toml')
+            st.caption('API-Football competition identities also require review before ranking. No subscriptions, auto-upgrades, betting account access or automated wagering. Do not pay for a plan to enable this build.')
+            st.markdown('[football-data.org attribution](https://www.football-data.org/) · [API-Football attribution](https://www.api-football.com/)')
+    finally:
+        world_db.close()
+
+
 def display():
     now = datetime.now(timezone.utc)
     st.set_page_config(page_title='First-Half Goals Lab', page_icon='⚽', layout='wide')
-    st.caption('BUNDESLIGA • PERSONAL RESEARCH • ZERO SUBSCRIPTIONS')
+    st.caption('WORLDWIDE COVERAGE TARGET • PERSONAL RESEARCH • ZERO SUBSCRIPTIONS')
     st.title('First-Half Goals Lab')
-    st.write('Find upcoming Bundesliga games and inspect recent first-half goals.')
+    st.write('Find upcoming games across your available leagues and inspect first-half goal evidence.')
     enabled = st.toggle('Load current fixtures', value=os.environ.get('FH_ENGINE_DISABLE_LIVE') != '1')
     feed, feed_error = (None, None)
     if enabled:
@@ -75,8 +158,8 @@ def display():
         upcoming = upcoming_matches(current_matches, now, 365)
         snapshot = db.execute('SELECT MAX(observed_at) FROM snapshots').fetchone()[0]
         c1, c2, c3, c4 = st.columns(4)
-        c1.metric('Current season fixtures', len(current_matches))
-        c2.metric('Upcoming games', len(upcoming))
+        c1.metric('Bundesliga season fixtures', len(current_matches))
+        c2.metric('Bundesliga upcoming', len(upcoming))
         c3.metric('Reviewed corrections', sum('correction' in r for r in matches))
         c4.metric('Validated forecasts', 0)
         if feed:
@@ -85,27 +168,7 @@ def display():
         fixtures_tab, audit_tab, backtest_tab, manual_tab, readiness_tab = st.tabs(
             ['Fixtures', 'Data audit', 'Backtest', 'Manual records', 'Readiness'])
         with fixtures_tab:
-            st.subheader('Find games')
-            horizon = st.selectbox('When (Nigeria time)', ['Today', 'Tomorrow', 7, 14, 30], index=2,
-                                   format_func=lambda d: f'Next {d} days' if isinstance(d, int) else d)
-            st.button('Check fixtures again', help='Reruns the page; the shared five-minute source cache still applies.')
-            st.caption('Bundesliga only. Started and finished games are excluded. These fixtures have not been independently checked against SportyBet.')
-            if not upcoming:
-                st.info('No fixtures available from the current feed. No match probabilities are available.')
-            else:
-                selected = upcoming_matches(current_matches, now, horizon)
-                rows = [{'Match ID': r['match_id'], 'Home': r['home'], 'Away': r['away'],
-                         'Kickoff (Nigeria)': wat(r['kickoff']),
-                         'Home FH goals / games': recent_halves(current_matches, r['home_id'], now),
-                         'Away FH goals / games': recent_halves(current_matches, r['away_id'], now),
-                         'SportyBet market': 'Check manually', 'Probability': 'Not validated'}
-                        for r in selected]
-                if rows:
-                    st.dataframe(rows, hide_index=True, width='stretch')
-                    st.caption(f'{len(rows)} upcoming games. Goal counts mean games with at least one first-half goal / games with an available HT result, using each team’s latest 10 completed games in this season. They are not prediction probabilities.')
-                    st.download_button('Export fixture list', csv_bytes(rows), 'current-fixtures.csv', 'text/csv')
-                else:
-                    st.info('No games in this window. Choose Next 7 days or Next 14 days.')
+            show_finder(feed,enabled,now)
         with audit_tab:
             st.subheader('Data quality and provenance')
             st.write('A plausible score is not necessarily a correct score. Both zero-goal and nonzero halves remain visible.')

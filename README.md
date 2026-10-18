@@ -1,5 +1,7 @@
 # First-Half Goals Lab
 
+The worldwide finder adds country/region/league filters, Today/Tomorrow/Next7days and Top20/Top50/All eligible estimates. [Worldwide source setup](docs/worldwide-coverage.md) explains the free provider keys and current access checks. Missing keys keep Bundesliga working; additional countries are not claimed live until authenticated verification. Initial wider probability models remain shadow research.
+
 A Bundesliga fixture finder and research workbench. The Streamlit app retrieves current fixtures from OpenLigaDB's free documented API, displays Nigeria kickoff times and descriptive first-half goal counts, and includes the saved score audit and model evaluations.
 
 **The model has not earned release.** Its frozen 2025–26 test was slightly worse than the earlier league goal-frequency baseline. Validated probabilities and SportyBet readiness remain locked. Nothing in this app creates a booking code, accesses a betting account or places a wager.

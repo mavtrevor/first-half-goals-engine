@@ -1,0 +1,13 @@
+# Worldwide sources and evidence
+
+Bundesliga remains the verified key-free live feed. The additional adapters support football-data.org's published free domestic competitions (including Brazil) and API-Football's direct free account, subject to actual season and request entitlements. Countries listed as targets are not claimed as live coverage.
+
+Put FOOTBALL_DATA_TOKEN and optionally API_FOOTBALL_KEY in Streamlit Settings → Secrets. Do not paste keys in chat, source code or public exports. Use free accounts only. No paid add-on, paid upgrade or bookmaker account is required. Missing keys leave the existing Bundesliga feed usable. The source panel reports missing keys, denied access, old-only seasons, quota failures and partial responses without exposing raw errors or credentials.
+
+API-Football competitions require reviewed senior real competition IDs in `config/worldwide-sources.json` before selection. To review, inspect the authenticated official catalog, verify the real senior competition and country against official league information, record its provider ID with classification `senior_real`, and re-run the bounded live entitlement check. Never infer senior classification from a name containing no youth marker. Country targets cover six regions but do not override access restrictions. TheSportsDB and Football-Data.co.uk are not automated ingestion sources in this build.
+
+All fixtures shows each matching current game. Eligible estimates shows only league-model releases; there are initially none. Top20/50 is per Nigeria calendar day, does not pad the list and does not relabel descriptive counts as probabilities. Today is the default. Forecast evidence is separate from fixture availability and SportyBet market/odds readiness. The initial wider models are shadow research and require prospective validation before numerical public release.
+
+Provider snapshots, budgets and research records are private runtime data in ignored `data/worldwide.sqlite`. Cached source timestamps are retained; rerunning the app does not make old data fresh. Partial/error responses are labeled and never claimed as full coverage. Provider headers, bounded caching and atomic budgets constrain requests. A lost Cloud runtime store requires an authoritative quota handshake again; it never grants an invented new daily allowance.
+
+Sources and attribution: [OpenLigaDB](https://www.openligadb.de/) under [ODbL1.0](https://opendatacommons.org/licenses/odbl/1-0/), [football-data.org](https://www.football-data.org/), [API-Football](https://www.api-football.com/). Provider-specific use conditions still apply. There is no automated wagering or booking-code generation.

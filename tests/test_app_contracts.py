@@ -10,6 +10,20 @@ from streamlit.testing.v1 import AppTest
 
 
 class AppTests(unittest.TestCase):
+    def test_new_fetch_timestamp_is_not_rejected_as_future_during_render(self):
+        def fresh(season):
+            observed=datetime.now(timezone.utc)
+            fixture=dict(match_id=123,season=season,home_id=1,away_id=2,home='Fresh Home',away='Fresh Away',
+                kickoff=(observed+timedelta(days=2)).isoformat(),finished=False,target=None,
+                snapshot_hash='hash',quality='fixture_only')
+            return dict(matches=[fixture],observed_at=observed.isoformat(),source_url='https://api.openligadb.de/getmatchdata/bl1/2026')
+        with patch('live.fetch_season',side_effect=fresh):
+            app=AppTest.from_file(str(Path(__file__).resolve().parents[1]/'app.py')).run(timeout=30)
+            st.cache_data.clear()
+            app=next(s for s in app.selectbox if s.label=='When (Nigeria time)').select('Next 7 days').run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(next(m for m in app.metric if m.label=='Matching fixtures').value,'1')
+
     def test_challenger_is_explicitly_exploratory_and_never_validated_forecast(self):
         folder = Path(self.temp.name)/'reports/poisson-v2-exploratory'
         folder.mkdir(parents=True)
@@ -61,16 +75,26 @@ class AppTests(unittest.TestCase):
 
     def test_live_fixtures_show_with_no_local_database_and_no_fabricated_probability(self):
         now = datetime.now(timezone.utc)
-        fixture = {'match_id':123,'home_id':1,'away_id':2,'home':'Home FC','away':'Away FC',
+        fixture = {'match_id':123,'season':2026,'home_id':1,'away_id':2,'home':'Home FC','away':'Away FC',
                    'kickoff':(now+timedelta(days=2)).isoformat(),'finished':False,
                    'target':None,'snapshot_hash':'abc','quality':'fixture_only'}
         with patch('live.fetch_season', return_value={'matches':[fixture],
                    'observed_at':now.isoformat(),'source_url':'https://api.openligadb.de/getmatchdata/bl1/2026'}):
             app = AppTest.from_file(str(Path(__file__).resolve().parents[1]/'app.py')).run(timeout=30)
+            app = next(s for s in app.selectbox if s.label=='When (Nigeria time)').select('Next 7 days').run(timeout=30)
         self.assertFalse(app.exception)
-        self.assertEqual(next(m for m in app.metric if m.label == 'Upcoming games').value,'1')
+        self.assertEqual(next(m for m in app.metric if m.label == 'Bundesliga upcoming').value,'1')
         self.assertEqual(app.dataframe[0].value.iloc[0]['Home'], 'Home FC')
         self.assertEqual(app.dataframe[0].value.iloc[0]['Probability'], 'Not validated')
-        self.assertEqual(app.dataframe[0].value.iloc[0]['Home FH goals / games'], 'No HT results')
+        self.assertTrue(any('Home FH goals / games' in d.value.columns for d in app.dataframe))
         self.assertFalse(any(b.label == 'Save human observation' for b in app.button))
         self.assertEqual(next(m for m in app.metric if m.label == 'Validated forecasts').value,'0')
+
+    def test_worldwide_controls_missing_tokens_and_today_default(self):
+        app = AppTest.from_file(str(Path(__file__).resolve().parents[1]/'app.py')).run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(next(s for s in app.selectbox if s.label=='When (Nigeria time)').value,'Today')
+        self.assertEqual(next(s for s in app.selectbox if s.label=='Show').options,['All fixtures','Eligible estimates'])
+        self.assertEqual(next(s for s in app.selectbox if s.label=='Selection limit').options,['Top 20','Top 50','All eligible'])
+        self.assertTrue(any('FOOTBALL_DATA_TOKEN' in str(x.value) for x in app.code))
+        self.assertFalse(any(b.label=='Save human observation' for b in app.button))

@@ -1,0 +1,13 @@
+{
+  "football_data_codes": ["PL", "ELC", "BL1", "PD", "SA", "FL1", "DED", "PPL", "BSA"],
+  "regions": {
+    "Europe": ["England", "Germany", "Spain", "Italy", "France", "Netherlands", "Portugal", "Scotland", "Belgium", "Turkey", "Greece", "Austria", "Switzerland", "Denmark", "Norway", "Sweden", "Finland", "Ireland", "Poland", "Romania"],
+    "South America": ["Brazil", "Argentina", "Colombia", "Chile", "Peru", "Uruguay", "Ecuador", "Paraguay", "Bolivia", "Venezuela"],
+    "North/Central America": ["USA", "United States", "Canada", "Mexico", "Costa Rica", "Honduras", "Guatemala", "Panama", "Jamaica"],
+    "Africa": ["Nigeria", "South Africa", "Egypt", "Morocco", "Tunisia", "Algeria", "Ghana", "Kenya", "Tanzania", "Zambia", "Senegal", "Ivory Coast"],
+    "Asia": ["Japan", "South Korea", "South-Korea", "China", "China PR", "Saudi Arabia", "Saudi-Arabia", "India", "Indonesia", "Thailand", "Malaysia", "Vietnam", "Qatar", "United Arab Emirates", "UAE", "Iran"],
+    "Oceania": ["Australia", "New Zealand", "New-Zealand", "Fiji"]
+  },
+  "reviewed_api_football_competitions": {},
+  "notice": "Country lists are discovery targets, not entitlements. API-Football senior competition classifications require a reviewed provider ID entry before selection; unknown competitions remain diagnostics-only. No free current-season access is assumed."
+}
